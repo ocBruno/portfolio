@@ -6,7 +6,7 @@ export default function News() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Next News</title>
+        <title>Ny Times News</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
