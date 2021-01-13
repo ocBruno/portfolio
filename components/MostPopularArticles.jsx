@@ -6,7 +6,6 @@ import styles from "../styles/MostPopularArticles.module.css";
 const NY_API_KEY = process.env.NEXT_PUBLIC_NY_API_KEY;
 
 // 1, 7, 14.. number of days for most popular articles
-
 const timespan = 7;
 
 export default function MostPopularArticles() {
@@ -22,7 +21,7 @@ export default function MostPopularArticles() {
         <>
           <div className={styles.articlesContainer}>
             <h2 className={styles.articlesHeader}>
-              Most popular NY times articles{" "}
+              Most popular NY times articles past {timespan} days
             </h2>
 
             {data.map((article) => (

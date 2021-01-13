@@ -1,8 +1,8 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/News.module.css";
 import MostPopularArticles from "../components/MostPopularArticles";
 
-export default function Home() {
+export default function News() {
   return (
     <div className={styles.container}>
       <Head>
@@ -10,12 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <a
-          alt="Check out my page integrated to ny api with custom hooks!"
-          href="/news"
-        >
-          Check out my page integrated to ny api with custom hooks!
-        </a>
+        <MostPopularArticles />
       </main>
 
       <footer className={styles.footer}>

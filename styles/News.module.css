@@ -18,6 +18,18 @@
   align-items: flex-start;
 }
 
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nyTimesSvg {
+  margin-left: 3rem;
+  fill: #000;
+  height: 30px;
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;
