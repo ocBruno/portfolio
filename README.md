@@ -2,10 +2,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## TODO
 ☒ Integrate NY times news api with custom hook
+
 ☐ Fix up home page content and responsive design
+
 ☐ Add JSDOC and add necessary comments
+
 ☐ Add jest and create initial unit tests for ny api page and index
+
 ☐ ...
+
 
 
 ## Getting Started
