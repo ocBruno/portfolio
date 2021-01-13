@@ -3,7 +3,7 @@ import { returnShorthandName } from "../helpers/string.js";
 import { apiStates, useApi } from "../helpers/useApi.jsx";
 import styles from "../styles/MostPopularArticles.module.css";
 
-const NY_API_KEY = `ZMAWBN8ERrNXIAGByahwGltJHGXMOxlc`;
+const NY_API_KEY = process.env.NEXT_PUBLIC_NY_API_KEY;
 
 // 1, 7, 14.. number of days for most popular articles
 
