@@ -1,6 +1,6 @@
 import Head from "next/head";
-import styles from "../styles/News.module.css";
 import MostPopularArticles from "../components/MostPopularArticles";
+import styles from "../styles/News.module.css";
 
 export default function News() {
   return (

@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   background: rgb(252, 252, 252);
-  padding: 0 0.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,27 +9,47 @@
 }
 .openToWorkPortrait {
   width: 90px;
+  display: inline-flex;
   height: auto;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
+  margin-right: 2rem;
   border-radius: 100%;
 }
 .projectLink {
   margin-top: 0.5rem;
   font-size: 13px;
   margin-bottom: 0.5rem;
+  border-bottom: 1px solid grey;
+  padding-bottom: 0.3rem;
 }
 .projectLink::before {
-  content: "⇨";
+  content: "⇨ ";
+}
+
+.userDescription {
+display: inline-flex;
+align-items: center;
+margin-right: 28rem;
+font-size: 12px;
+}
+.userGithub{
+margin-left: 1.5rem;
+font-weight: 400;
+}
+.userGithub:hover{
+font-weight: 400;
+color: rgb(142, 152, 254);
+transition: all 300ms ease-in-out;
 }
 .main {
-  padding: 2rem;
   flex: 1;
   display: flex;
   width: 100%;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 

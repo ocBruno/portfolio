@@ -1,16 +1,26 @@
 import React from "react";
+
+import { apiStates, useApi } from "../hooks/useApi.jsx";
 import { returnShorthandName } from "../helpers/string.js";
-import { apiStates, useApi } from "../helpers/useApi.jsx";
 import styles from "../styles/MostPopularArticles.module.css";
 
-const NY_API_KEY = process.env.NEXT_PUBLIC_NY_API_KEY;
+/**
+ *  place corresponding key from NY TIMES APIs
+ *  Most Popular API
+ * named
+ * NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
+ *  in .env.local file root directory
+ */
 
-// 1, 7, 14.. number of days for most popular articles
+const NY_MOST_SHARED_API_KEY = process.env.NEXT_PUBLIC_NY_MOST_SHARED_API_KEY;
+
+// 1, 7, or 14 number of days for most popular articles
+
 const timespan = 7;
 
 export default function MostPopularArticles() {
   const { state, error, data } = useApi(
-    `https://api.nytimes.com/svc/mostpopular/v2/shared/${timespan}/facebook.json?api-key=${NY_API_KEY}`
+    `https://api.nytimes.com/svc/mostpopular/v2/shared/${timespan}/facebook.json?api-key=${NY_MOST_SHARED_API_KEY}`
   );
 
   switch (state) {
