@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
 export const apiStates = {
-  LOADING: 'LOADING',
-  SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR',
+  LOADING: "LOADING",
+  SUCCESS: "SUCCESS",
+  ERROR: "ERROR",
 };
-
-export const useApi = url => {
+// useApi ( url to fetch): { state: ..., data: ... and error: ... }
+export const useApi = (url) => {
   const [data, setData] = React.useState({
     state: apiStates.LOADING,
-    error: '',
+    error: "",
     data: [],
   });
 
@@ -24,13 +24,13 @@ export const useApi = url => {
       .then((data) => {
         setPartData({
           state: apiStates.SUCCESS,
-          data: data.results
+          data: data.results,
         });
       })
       .catch(() => {
-       setPartData({
+        setPartData({
           state: apiStates.ERROR,
-          error: 'fetch failed'
+          error: "fetch failed",
         });
       });
   }, []);
