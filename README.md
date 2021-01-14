@@ -15,6 +15,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Set up necessary api keys:
+- NY times most popular news api with custom hook (https://developer.nytimes.com/)
+
 First, run the development server:
 
 ```bash

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Reusable NextJs Utils</title>
+        <title>Brunos Projects</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
