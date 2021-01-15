@@ -1,16 +1,20 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) which showcases my reusable next js components.
 
 ## TODO
+
 ☒ Integrate NY times news api with custom hook
 
 ☒ Add Eslint and babel
 
-☐ Fix up home page content and responsive design
+☒ Fix up home page content and responsive design
 
 ☐ Add jest and create initial unit tests for ny api page and index
 
-☐ ...
+☐ Improve Home page and News design
 
+☐ Brainstorm other functionalities with high chance of reusal in the future
+
+☐ .....
 
 
 ## Getting Started
