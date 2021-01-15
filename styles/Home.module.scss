@@ -1,5 +1,4 @@
-
-/* Mobile < 600 px*/
+/* Mobile */
 .pageContainer {
   padding: 1.2rem;
   display: flex;
@@ -25,29 +24,29 @@
   white-space: nowrap;
 }
 .userNameHeader {
-display: inline-flex;
-vertical-align: top;
-margin-right: auto;
+  display: inline-flex;
+  vertical-align: top;
+  margin-right: auto;
 }
-.userHeader { 
+.userHeader {
   margin-bottom: 1rem;
   width: 100%;
 }
 .userDescription {
-display: inline-flex;
-align-items: center;
-margin-right: auto;
-font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+  font-size: 12px;
   margin-bottom: 1rem;
 }
-.userGithub{
-margin-left: 1.5rem;
-font-weight: 400;
+.userGithub {
+  margin-left: 1.5rem;
+  font-weight: 400;
 }
-.userGithub:hover{
-font-weight: 400;
-color: rgb(142, 152, 254);
-transition: all 300ms ease-in-out;
+.userGithub:hover {
+  font-weight: 400;
+  color: rgb(142, 152, 254);
+  transition: all 300ms ease-in-out;
 }
 .projectsDescription {
   flex: 1;
@@ -81,31 +80,30 @@ transition: all 300ms ease-in-out;
   opacity: 0.06;
 }
 
-/* TABLET +  >= 800px */
+/* TABLET && DESKTOPS + +  >= 800px */
 
 @media (min-width: 800px) {
   .pageContainer {
-  padding: 2rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-}
-.userDescription {
-  width: auto;
-  max-width: 39rem;
-}
-.userImage {
-  margin-bottom: -83px;
-  margin-top: 54px;
-  width: 90px;
-}
-.userHeaderContainer {
-  display: flex;
-  width: 100%;
-  flex-flow: wrap;
-  margin-bottom: 1.2rem;
-}
-
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .userDescription {
+    width: auto;
+    max-width: 39rem;
+  }
+  .userImage {
+    margin-bottom: -83px;
+    margin-top: 54px;
+    width: 90px;
+  }
+  .userHeaderContainer {
+    display: flex;
+    width: 100%;
+    flex-flow: wrap;
+    margin-bottom: 1.2rem;
+  }
 }

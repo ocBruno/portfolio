@@ -1,15 +1,17 @@
-.container {
+
+/* Mobile */
+.pageContainer {
   min-height: 100vh;
   background: rgb(252, 252, 252);
-  padding: 0 0.5rem;
+  padding: 2.4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.main {
-  padding: 5rem 0;
+.newsContent {
+  padding: 2rem 0;
   flex: 1;
   display: flex;
   width: 100%;
@@ -18,7 +20,7 @@
   align-items: flex-start;
 }
 
-.footer {
+.pageFooter {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -30,6 +32,8 @@
   fill: #000;
   height: 30px;
 }
-@media (max-width: 600px) {
+/* TABLET && DESKTOPS + +  >= 800px */
+
+@media (min-width: 800px) {
 
 }
