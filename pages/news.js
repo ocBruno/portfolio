@@ -1,5 +1,7 @@
 import Head from "next/head";
+
 import MostPopularArticles from "../components/MostPopularArticles";
+
 import styles from "../styles/News.module.scss";
 
 export default function News() {
