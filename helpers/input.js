@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 export function useInput({ type, defaultVal }) {
   const [value, setValue] = useState(defaultVal);
   const input = (
@@ -12,21 +11,26 @@ export function useInput({ type, defaultVal }) {
   return [value, input];
 }
 
-export function useSelect({ name, values }) {
+export function useSelect({ name, values, className }) {
   const activeValue = values.length === 0 ? values : values[0];
   const [value, setValue] = useState(activeValue);
   const input = (
     <select
       id={name}
       name={name}
+      className={className}
       onChange={(e) => {
         setValue(e.target.value);
       }}
     >
-      {values.map((element, index) => {
+      {values.map((elementValue, index) => {
         return (
-          <option value={element} key={index}>
-            {element}
+          <option
+            selected={elementValue === value}
+            value={elementValue}
+            key={index}
+          >
+            {elementValue}
           </option>
         );
       })}

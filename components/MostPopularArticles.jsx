@@ -6,6 +6,7 @@ import { appendEllipses } from "../helpers/string.js";
 import { useSelect } from "../helpers/input.js";
 
 import styles from "../styles/MostPopularArticles.module.scss";
+import selectStyles from "../styles/Select.module.scss";
 
 const MostPopularArticles = () => {
   /**
@@ -20,14 +21,15 @@ const MostPopularArticles = () => {
 
   const [activeTimespanInputValue, newActiveTimespanInput] = useSelect({
     name: "activeTimespan",
-    values: ["daily", "weekly", "every two weeks"],
+    values: ["Daily", "Weekly", "Monthly"],
+    className: selectStyles.selectCss,
   });
 
   // string names mapped to numerical equivalents 1, 7, or 14 number of days for most popular articles
   const API_MAPPED_TIMESPANS = {
-    daily: 1,
-    weekly: 7,
-    "every two weeks": 14,
+    Daily: 1,
+    Weekly: 7,
+    Monthly: 30,
   };
 
   //  convert to API compatible numerical url param
@@ -52,9 +54,13 @@ const MostPopularArticles = () => {
         <>
           <div className={styles.articlesContainer}>
             <h2 className={styles.articlesRow}>
-              Most popular NY times articles {activeTimespanInputValue}
+              Most popular NY times articles
             </h2>
-            <h2>{newActiveTimespanInput}</h2>
+
+            <h2 className={styles.timespanInputContainer}>
+              {newActiveTimespanInput}
+            </h2>
+
             {data.map((article, i) => (
               <div key={i} className={styles.articleContainer}>
                 <a href={article.url}>
