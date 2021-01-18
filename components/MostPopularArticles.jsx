@@ -19,31 +19,51 @@ const MostPopularArticles = () => {
 
   const NY_MOST_SHARED_API_KEY = process.env.NEXT_PUBLIC_NY_MOST_SHARED_API_KEY;
 
-  const [activeTimespanInputValue, newActiveTimespanInput] = useSelect({
-    name: "activeTimespan",
-    values: ["Daily", "Weekly", "Monthly"],
-    className: selectStyles.selectCss,
-  });
-
+  // MOST POPULAR ARTICLES FILTER OPTIONS
   // string names mapped to numerical equivalents 1, 7, or 14 number of days for most popular articles
   const API_MAPPED_TIMESPANS = {
     Daily: 1,
     Weekly: 7,
     Monthly: 30,
   };
+  const API_MAPPED_CATEGORIES = {
+    "Shared on Facebook": "shared",
+    Emailed: "emailed",
+    Viewed: "viewed",
+  };
+
+  const categoryValues = Object.keys(API_MAPPED_CATEGORIES);
+  const timespanValues = Object.keys(API_MAPPED_TIMESPANS);
+
+  const [activeCategory, CategorySelectInput] = useSelect({
+    name: "CategorySelectInput",
+    values: categoryValues,
+    className: selectStyles.selectCss,
+  });
+
+  const [activeTimespan, TimespanSelectInput] = useSelect({
+    name: "TimespanSelectInput",
+    values: timespanValues,
+    className: selectStyles.selectCss,
+  });
+
+  //  convert to API compatible category url param
+  // if type is shared include /facebook.json
+  const mappedActiveCategoryValue = API_MAPPED_CATEGORIES[activeCategory];
 
   //  convert to API compatible numerical url param
-  const mappedNumericalTimespanValue =
-    API_MAPPED_TIMESPANS[activeTimespanInputValue];
-
-  // pass timespan mapped input value to use api hook so whenever it changes the data refreshes
-  const dataUpdater = activeTimespanInputValue;
+  const conditialSharedParameter =
+    mappedActiveCategoryValue === "shared" ? "/facebook" : "";
+  const mappedActiveTimespanValue =
+    API_MAPPED_TIMESPANS[activeTimespan] + conditialSharedParameter;
 
   //  set active state error and data according to api response
-  const { state, error, data } = useApi({
-    url: `https://api.nytimes.com/svc/mostpopular/v2/shared/${mappedNumericalTimespanValue}/facebook.json?api-key=${NY_MOST_SHARED_API_KEY}`,
-    dataUpdater: dataUpdater,
-  });
+  const { state, error, data } = useApi(
+    {
+      url: `https://api.nytimes.com/svc/mostpopular/v2/${mappedActiveCategoryValue}/${mappedActiveTimespanValue}.json?api-key=${NY_MOST_SHARED_API_KEY}`,
+    },
+    [activeTimespan, activeCategory]
+  );
 
   // handle component states
   switch (state) {
@@ -57,8 +77,9 @@ const MostPopularArticles = () => {
               Most popular NY times articles
             </h2>
 
-            <h2 className={styles.timespanInputContainer}>
-              {newActiveTimespanInput}
+            <h2 className={styles.filterInputsContainer}>
+              {CategorySelectInput}
+              {TimespanSelectInput}
             </h2>
 
             {data.map((article, i) => (

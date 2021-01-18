@@ -12,29 +12,26 @@ export function useInput({ type, defaultVal }) {
 }
 
 export function useSelect({ name, values, className }) {
-  const activeValue = values.length === 0 ? values : values[0];
-  const [value, setValue] = useState(activeValue);
+  const initialValue = values.length === 0 ? values : values[0];
+  const [activeValue, setActiveValue] = useState(initialValue);
   const input = (
     <select
       id={name}
       name={name}
       className={className}
+      value={activeValue}
       onChange={(e) => {
-        setValue(e.target.value);
+        setActiveValue(e.target.value);
       }}
     >
       {values.map((elementValue, index) => {
         return (
-          <option
-            selected={elementValue === value}
-            value={elementValue}
-            key={index}
-          >
+          <option value={elementValue} key={index}>
             {elementValue}
           </option>
         );
       })}
     </select>
   );
-  return [value, input];
+  return [activeValue, input];
 }
