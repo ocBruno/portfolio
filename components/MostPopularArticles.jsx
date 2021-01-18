@@ -1,10 +1,7 @@
-import React, { useEffect, setState, useState, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment } from "react";
 
 import { apiStates, useApi } from "../hooks/useApi.jsx";
-import { appendEllipses } from "../helpers/string.js";
 import { useSelect } from "../helpers/input.js";
-
 import styles from "../styles/MostPopularArticles.module.scss";
 import selectStyles from "../styles/Select.module.scss";
 import ImageArticle from "./ImageArticle.jsx";
@@ -56,6 +53,7 @@ const MostPopularArticles = () => {
   //  convert to API compatible numerical url param
   const conditialSharedParameter =
     mappedActiveCategoryValue === "shared" ? "/facebook" : "";
+
   const mappedActiveTimespanValue =
     API_MAPPED_TIMESPANS[activeTimespan] + conditialSharedParameter;
 
