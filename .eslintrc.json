@@ -8,6 +8,7 @@
   },
   "env": {
     "jest": true,
+    "node": true,
     "browser": true
   },
   "parser": "babel-eslint"
