@@ -1,4 +1,4 @@
-import React, { useEffect, setState, useState } from "react";
+import React, { useEffect, setState, useState, Fragment } from "react";
 import PropTypes from "prop-types";
 
 import { apiStates, useApi } from "../hooks/useApi.jsx";
@@ -7,6 +7,8 @@ import { useSelect } from "../helpers/input.js";
 
 import styles from "../styles/MostPopularArticles.module.scss";
 import selectStyles from "../styles/Select.module.scss";
+import ImageArticle from "./ImageArticle.jsx";
+import TextArticle from "./TextArticle.jsx";
 
 const MostPopularArticles = () => {
   /**
@@ -76,30 +78,39 @@ const MostPopularArticles = () => {
             <h2 className={styles.articlesRow}>
               Most popular NY times articles
             </h2>
+            <div className={styles.filterInputsContainer}>
+              <Fragment>{CategorySelectInput}</Fragment>
+              <Fragment>{TimespanSelectInput}</Fragment>
+            </div>
 
-            <h2 className={styles.filterInputsContainer}>
-              {CategorySelectInput}
-              {TimespanSelectInput}
-            </h2>
-
-            {data.map((article, i) => (
-              <div key={i} className={styles.articleContainer}>
-                <a href={article.url}>
-                  <h2 className={styles.articleHeader}>
-                    {appendEllipses(article.title, 45)}
-                  </h2>
-                  <h5 className={styles.source}>{article.source}</h5>
-
-                  {article.media[0] &&
-                    article.media[0]["media-metadata"][2].url && (
-                      <img
-                        className={styles.img}
-                        src={article.media[0]["media-metadata"][2].url}
-                      />
-                    )}
-                </a>
-              </div>
-            ))}
+            {data.map((article, i) => {
+              let isImageAvailable;
+              if (article.media[0]) {
+                isImageAvailable = true;
+              } else {
+                isImageAvailable = false;
+              }
+              if (isImageAvailable) {
+                return (
+                  <ImageArticle
+                    source={article.source}
+                    title={article.title}
+                    link={article.url}
+                    imgSrc={article.media[0]["media-metadata"][2].url}
+                    key={`article${i}`}
+                  />
+                );
+              } else {
+                return (
+                  <TextArticle
+                    source={article.source}
+                    title={article.title}
+                    link={article.url}
+                    key={`article${i}`}
+                  />
+                );
+              }
+            })}
           </div>
         </>
       );

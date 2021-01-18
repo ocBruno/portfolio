@@ -14,8 +14,12 @@
   border-bottom: 1px solid grey;
 }
 .filterInputsContainer {
+  display: flex;
   width: 60rem;
   margin-bottom: 2rem;
+}
+.filterInputsContainer > select {
+  margin-right: 1.2rem;
 }
 .articlesRow {
   width: 60rem;

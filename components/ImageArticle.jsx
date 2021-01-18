@@ -6,12 +6,14 @@ import styles from "../styles/ImageArticle.module.scss";
 
 const ImageArticle = ({ source, title, link, imgSrc, key }) => {
   return (
-    <div key={key} className={styles.articleContainer}>
+    <div key={key} className={styles.imageArticleContainer}>
       <a href={link}>
-        <h2 className={styles.articleHeader}>{appendEllipses(title, 45)}</h2>
-        <h5 className={styles.source}>{source}</h5>
+        <h2 className={styles.imageArticleHeader}>
+          {appendEllipses(title, 45)}
+        </h2>
+        <h5 className={styles.imageArticleSource}>{source}</h5>
 
-        <img className={styles.img} src={imgSrc} />
+        <img className={styles.imageArticleImage} src={imgSrc} />
       </a>
     </div>
   );

@@ -1,23 +1,23 @@
 /* Mobile */
 
-.articleContainer {
+.imageArticleContainer {
   width: 30rem;
   margin-bottom: 2rem;
   margin-right: auto;
 }
-.articleHeader {
+.imageArticleHeader {
   font-size: 11pt;
   width: 88%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   padding-bottom: 0.6rem;
   margin-bottom: 0.6rem;
 }
-.source {
+.imageArticleSource {
   font-size: 12px;
   margin-bottom: 1rem;
 }
 
-.img {
+.imageArticleImage {
   width: 88%;
   border-radius: 12px;
 }
@@ -25,12 +25,12 @@
 /* TABLET && DESKTOPS +  >= 800px */
 
 @media (min-width: 800px) {
-  .articleContainer {
+  .imageArticleContainer {
     margin-right: 0;
     margin-bottom: auto;
     margin-top: 2rem;
   }
-  .articleHeader {
+  .imageArticleHeader {
     font-size: 14pt;
   }
 }

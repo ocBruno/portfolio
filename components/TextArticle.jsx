@@ -6,10 +6,12 @@ import styles from "../styles/TextArticle.module.scss";
 
 const TextArticle = ({ source, title, link, key }) => {
   return (
-    <div key={key} className={styles.articleContainer}>
+    <div key={key} className={styles.textArticleContainer}>
       <a href={link}>
-        <h2 className={styles.articleHeader}>{appendEllipses(title, 45)}</h2>
-        <h5 className={styles.source}>{source}</h5>
+        <h2 className={styles.textArticleHeader}>
+          {appendEllipses(title, 45)}
+        </h2>
+        <h5 className={styles.textArticleSource}>{source}</h5>
       </a>
     </div>
   );
