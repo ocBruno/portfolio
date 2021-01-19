@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) which showcases my reusable next js components.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) which integrates NYtimes Most Popular API and is aimed at having reusable structures, patterns, components, screens and helpers for future test driven React or Next.js projects.
 
 ## TODO
 
@@ -26,9 +26,15 @@ Set up necessary api keys:
 
 - NY times most popular news api with custom hook (https://developer.nytimes.com/)
 
-First, run the development server:
+Take a good look through this file and remember to read the code comments!
+
+First, use npm or yarn to install project dependencies and dev to run the development server:
 
 ```bash
+npm install
+# or
+yarn
+# then
 npm run dev
 # or
 yarn dev
@@ -60,6 +66,8 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
+
+At the moment i'm using Vercel for CI/CD and the following link http://brunos-portfolio.vercel.app/
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 

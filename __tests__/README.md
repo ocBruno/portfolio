@@ -25,3 +25,5 @@ Mock functions allow you to test the links between code by erasing the actual im
 - Snapshot tests
 
 This test takes a snapshot of the project structure as a tree each time the test is run and checks if the layout has changed since the last snapshot.
+
+- End to end tests
