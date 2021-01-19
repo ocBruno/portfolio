@@ -1,4 +1,4 @@
-import { appendEllipses } from "./string";
+import { appendEllipses } from "../helpers/string";
 
 describe("string helpers render as expected", () => {
   test("appendEllipses function should crop string at length argument and append 3 trailing periods", () => {

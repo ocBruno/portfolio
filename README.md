@@ -8,18 +8,22 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ☒ Fix up home page content and responsive design
 
-☐ Add jest and create initial unit tests for ny api page and index
+☐ Research react/next testing with jest and enzyme, define types of tests to be completed and update test readme
+
+☐ Add jest and create initial unit tests for ny api most shared page and index
 
 ☐ Improve Home page and News design
+
+☐ Test following components and files, useApi.js, news.js, index.js, ImageArticle.jsx, TextArticle.jsx, input.js
 
 ☐ Brainstorm other functionalities with high chance of reusal in the future
 
 ☐ .....
 
-
 ## Getting Started
 
 Set up necessary api keys:
+
 - NY times most popular news api with custom hook (https://developer.nytimes.com/)
 
 First, run the development server:
@@ -39,10 +43,13 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 To run tests use:
+
 ```bash
 yarn run test
 ```
+
 For linting download eslint extension if available in your code editor
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
