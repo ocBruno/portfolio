@@ -6,7 +6,8 @@
     "dev": "next dev --hostname 192.168.0.16",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "updateSnap": "jest --updateSnapshot"
   },
   "dependencies": {
     "next": "^10.0.5",

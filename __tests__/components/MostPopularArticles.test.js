@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import MostPopularArticles from "../components/MostPopularArticles";
-import { useApi } from "../hooks/useApi.jsx";
+import MostPopularArticles from "../../components/MostPopularArticles";
+import { useApi } from "../../hooks/useApi.jsx";
 
 import { NY_TIMES_MOST_POPULAR_SHARED_MONTHLY_MOCK_DATA } from "./MostPopularArticles.mock";
 
