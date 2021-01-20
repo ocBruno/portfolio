@@ -2,19 +2,26 @@
 
 This file explains the testing strategies used in this project.
 
+## Guidelines
+
+- Design tests based on how users use your platform
+- Prefer duplication over over-abstraction
+- Avoid testing implementation details
+- Write fewer longer user centered tests
+
 ## Tools
 
 ### Jest
 
 Jest is a JavaScript testing framework maintained by Facebook, Inc. designed and built by Christoph Nakazawa with a focus on simplicity and support for large web applications.
 
-### Enzyme
-
-Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output. Enzyme's API is meant to be intuitive and flexible by mimicking jQuery's API for DOM manipulation and traversal.
-
 ### React-test-renderer
 
 This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+### React-testing-library
+
+The core library, DOM Testing Library, is a light-weight solution for testing web pages by querying and interacting with DOM nodes (whether simulated with JSDOM/Jest or in the browser). The main utilities it provides involve querying the DOM for nodes in a way that's similar to how the user finds elements on the page. In this way, the library helps ensure your tests give you confidence that your application will work when a real user uses it.
 
 ## What to test?
 
@@ -61,7 +68,7 @@ These are unchanging variables, no need to test them.
 
 It is up to the creators of these libraries to test it. If you are not sure if a library is tested you should not use it.
 
-## Tests applied
+## Types of Tests
 
 ### Mock tests
 
@@ -82,16 +89,3 @@ Even if all your unit test pass, it still just means that the parts are working 
 ### Unit tests
 
 Unit tests cover blocks of code to ensure they run without problems. A tested unit can be a function, a module, a class. Unit tests should be isolated and independent of each other. For a given input, unit test checks the result. It can help you make sure that individual parts of your applications work as expected by finding problems early and avoiding regressions.
-
-## React Testing Recipes
-
-[React Testing Recipes](https://reactjs.org/docs/testing-recipes.html#setup--teardown)
-Setup/Teardown
-act()
-Rendering
-Data Fetching
-Mocking Modules
-Events
-Timers
-Snapshot Testing
-Multiple Renderers
