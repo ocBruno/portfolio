@@ -8,9 +8,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ☒ Fix up home page content and responsive design
 
-☐ Research react/next testing with jest and enzyme, define types of tests to be completed and update test readme
+☒ Update test readme
 
-☐ Add jest and create initial unit tests for ny api most shared page and index
+☐ Research necessary topics react/next testing with jest, define types of tests to be completed
+
+☐ Add jest and create initial tests for MostPopularArticles
 
 ☐ Improve Home page and News design
 

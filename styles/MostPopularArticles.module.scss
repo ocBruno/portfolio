@@ -26,7 +26,10 @@
   margin-bottom: 1.2rem;
   font-size: 18px;
 }
-
+.loadingSpinner {
+  width: 40px;
+  align-self: center;
+}
 /* TABLET && DESKTOPS +  >= 800px */
 
 @media (min-width: 800px) {

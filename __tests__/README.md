@@ -73,12 +73,25 @@ This test takes a snapshot of the project structure as a tree each time the test
 
 ### End to end tests
 
-Usually a multi step test combining multiple unit and integration tests into one big test. Usually very little is mocked or stubbed. Tests are done in a simulated browser, there may or may not be a UI while the test is running. example: testing an entire authentication flow.
+As opposed to other types of tests, E2E tests are always run inside a browser (or a browser-like) environment. It might be an actual browser that opens and the tests are run inside. It also may be a headless browser environment, which is a browser running without the user interface. The point of E2E tests is emulating an actual user within our running application. They will simulate behavior like scrolling, clicking, and typing and check if our application works well from the point of view of an actual user.
 
 ### Integration tests
 
-testing if different parts work or integrate with each other. Usually done with mounting or rendering a component. example: test if a child component can update context state in a parent.
+Even if all your unit test pass, it still just means that the parts are working well on their own. Still, the application might fail. Integration tests cover cross-module processes, where individual modules are combined and tested while working together. Thanks to them you can provide a way to ensure that your code works well as a whole.
 
 ### Unit tests
 
-testing an isolated part of your app, usually done in combination with shallow rendering. example: a component renders with the default props.
+Unit tests cover blocks of code to ensure they run without problems. A tested unit can be a function, a module, a class. Unit tests should be isolated and independent of each other. For a given input, unit test checks the result. It can help you make sure that individual parts of your applications work as expected by finding problems early and avoiding regressions.
+
+## React Testing Recipes
+
+[React Testing Recipes](https://reactjs.org/docs/testing-recipes.html#setup--teardown)
+Setup/Teardown
+act()
+Rendering
+Data Fetching
+Mocking Modules
+Events
+Timers
+Snapshot Testing
+Multiple Renderers
