@@ -1,28 +1,25 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from "react"
+import { render, screen } from "@testing-library/react"
+import MostPopularArticles from "../MostPopularArticles"
 
-import MostPopularArticles from "../components/MostPopularArticles";
-
-jest.mock("../MostPopularArticles");
-
-test("MostPopularArticles loads, and then displays received data", () => {
-  render(<MostPopularArticles />);
+test("MostPopularArticles loads, and then displays received data", async () => {
+  await render(<MostPopularArticles />)
 
   // INITIAL STATE
   // LOADING STATE
 
   // filter buttons, and loading svg are present
-  const categorySelectInput = screen.getByRole("select", {
+  const categorySelectInput = await screen.findByRole("select", {
     name: "CategorySelectInput",
-  });
-  const timespanSelectInput = screen.getByRole("select", {
+  })
+  const timespanSelectInput = await screen.getByRole("select", {
     name: "TimespanSelectInput",
-  });
+  })
   // TODO: Make svg accessible to get by role
   // const svgSpinner = screen.getByRole();
 
-  expect(categorySelectInput).toBeInTheDocument();
-  expect(timespanSelectInput).toBeInTheDocument();
+  expect(categorySelectInput).toBeInTheDocument()
+  expect(timespanSelectInput).toBeInTheDocument()
   // expect(svgSpinner).toBeInTheDocument();
 
   //SUCCESS STATE
@@ -31,4 +28,4 @@ test("MostPopularArticles loads, and then displays received data", () => {
   //
   //ERROR STATE
   // error state loads error page
-});
+})
