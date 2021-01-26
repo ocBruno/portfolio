@@ -9,6 +9,24 @@ import { useSelect } from "../helpers/input.js"
 import styles from "../styles/MostPopularArticles.module.scss"
 import selectStyles from "../styles/Select.module.scss"
 import LoadingSpinner from "./LoadingSpinner.jsx"
+// MOST POPULAR ARTICLES FILTER OPTIONS
+// string names mapped to equivalents
+
+//  past 1, 7, or 14 days
+export const API_MAPPED_TIMESPANS = {
+  Daily: 1,
+  Weekly: 7,
+  Monthly: 30,
+}
+// if article was shared, emailed, or viewed
+export const API_MAPPED_CATEGORIES = {
+  Emailed: "emailed",
+  Viewed: "viewed",
+  "Shared on Facebook": "shared",
+}
+
+export const CATEGORY_VALUES = Object.keys(API_MAPPED_CATEGORIES)
+export const TIMESPAN_VALUES = Object.keys(API_MAPPED_TIMESPANS)
 
 const MostPopularArticles = () => {
   /**
@@ -21,34 +39,15 @@ const MostPopularArticles = () => {
 
   const NY_MOST_SHARED_API_KEY = process.env.NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
 
-  // MOST POPULAR ARTICLES FILTER OPTIONS
-  // string names mapped to equivalents
-
-  //  past 1, 7, or 14 days
-  const API_MAPPED_TIMESPANS = {
-    Daily: 1,
-    Weekly: 7,
-    Monthly: 30,
-  }
-  // if article was shared, emailed, or viewed
-  const API_MAPPED_CATEGORIES = {
-    Emailed: "emailed",
-    Viewed: "viewed",
-    "Shared on Facebook": "shared",
-  }
-
-  const categoryValues = Object.keys(API_MAPPED_CATEGORIES)
-  const timespanValues = Object.keys(API_MAPPED_TIMESPANS)
-
   const [activeCategory, CategorySelectInput] = useSelect({
     name: "CategorySelectInput",
-    values: categoryValues,
+    values: CATEGORY_VALUES,
     className: selectStyles.selectCss,
   })
 
   const [activeTimespan, TimespanSelectInput] = useSelect({
     name: "TimespanSelectInput",
-    values: timespanValues,
+    values: TIMESPAN_VALUES,
     className: selectStyles.selectCss,
   })
 
