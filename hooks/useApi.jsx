@@ -24,7 +24,6 @@ export const useApi = ({ url }, dependencyArray = []) => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setPartData({
           state: apiStates.SUCCESS,
           data: data.results,

@@ -8,6 +8,7 @@ import { useSelect } from "../helpers/input.js"
 
 import styles from "../styles/MostPopularArticles.module.scss"
 import selectStyles from "../styles/Select.module.scss"
+import LoadingSpinner from "./LoadingSpinner.jsx"
 
 const MostPopularArticles = () => {
   /**
@@ -73,7 +74,10 @@ const MostPopularArticles = () => {
   // handle component states
   switch (state) {
     case apiStates.ERROR:
-      return <p>ERROR: {error || "General error"}</p>
+      if (process.env.NODE_ENV === "development") {
+        console.log(error)
+      }
+      return <div>Oops try again later</div>
     case apiStates.SUCCESS:
       return (
         <div className={styles.articlesContainer}>
@@ -120,34 +124,11 @@ const MostPopularArticles = () => {
       )
     default:
       return (
-        <svg
+        <LoadingSpinner
+          id="articlesLoadingSpinner"
+          description="A spinner showing the app is loading."
           className={styles.loadingSpinner}
-          width="38"
-          height="38"
-          id="loadingSpinner"
-          viewBox="0 0 38 38"
-          xmlns="http://www.w3.org/2000/svg"
-          stroke="#252525"
-        >
-          <title id="loadingSpinnerTitle">
-            A spinner showing the app is loading.
-          </title>
-          <g fill="none" fillRule="evenodd">
-            <g transform="translate(1 1)" strokeWidth="2">
-              <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
-              <path d="M36 18c0-9.94-8.06-18-18-18">
-                <animateTransform
-                  attributeName="transform"
-                  type="rotate"
-                  from="0 18 18"
-                  to="360 18 18"
-                  dur="1s"
-                  repeatCount="indefinite"
-                />
-              </path>
-            </g>
-          </g>
-        </svg>
+        />
       )
   }
 }
