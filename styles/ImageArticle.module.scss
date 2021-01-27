@@ -8,6 +8,9 @@
 .imageArticleHeader {
   font-size: 11pt;
   width: 88%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   padding-bottom: 0.6rem;
   margin-bottom: 0.6rem;

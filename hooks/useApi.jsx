@@ -17,11 +17,15 @@ export const useApi = ({ url }, dependencyArray = []) => {
 
   const setPartData = (partialData) => setData({ ...data, ...partialData })
 
+  // setup abort controller to cancel fetch request on cleanup
+  const controller = new AbortController()
+  const { signal } = controller
+
   React.useEffect(() => {
     setPartData({
       state: apiStates.LOADING,
     })
-    fetch(url)
+    fetch(url, { signal })
       .then((response) => response.json())
       .then((data) => {
         setPartData({
@@ -35,6 +39,9 @@ export const useApi = ({ url }, dependencyArray = []) => {
           error: "fetch failed",
         })
       })
+    return () => {
+      controller.abort()
+    }
   }, dependencyArray)
 
   return data

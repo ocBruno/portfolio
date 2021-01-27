@@ -1,5 +1,6 @@
 import React, { Fragment } from "react"
 
+import LoadingSpinner from "./LoadingSpinner.jsx"
 import ImageArticle from "./ImageArticle.jsx"
 import TextArticle from "./TextArticle.jsx"
 
@@ -8,7 +9,7 @@ import { useSelect } from "../helpers/input.js"
 
 import styles from "../styles/MostPopularArticles.module.scss"
 import selectStyles from "../styles/Select.module.scss"
-import LoadingSpinner from "./LoadingSpinner.jsx"
+
 // MOST POPULAR ARTICLES FILTER OPTIONS
 // string names mapped to equivalents
 

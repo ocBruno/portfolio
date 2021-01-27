@@ -1,7 +1,8 @@
 import React from "react"
-import { render, screen, waitFor } from "@testing-library/react"
-import MostPopularArticles from "../MostPopularArticles"
 import { act } from "react-dom/test-utils"
+import { render, screen, waitFor } from "@testing-library/react"
+
+import MostPopularArticles from "../MostPopularArticles"
 import MostPopularArticlesData from "../../__tests__/data/MostPopularArticlesData.json"
 
 test("MostPopularArticles loads spinner, then shows articles and filter select", async () => {

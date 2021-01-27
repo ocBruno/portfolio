@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-export function useInput({ name, type, defaultVal, className }) {
+export function useInput({ name, type, defaultVal, className = "" }) {
   const [value, setValue] = useState(defaultVal)
   const input = (
     <input
@@ -16,7 +16,7 @@ export function useInput({ name, type, defaultVal, className }) {
   return [value, input]
 }
 
-export function useSelect({ name, values, className }) {
+export function useSelect({ name, values, className = "" }) {
   const initialValue = values.length === 0 ? values : values[0]
   const [activeValue, setActiveValue] = useState(initialValue)
   const input = (

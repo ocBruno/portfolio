@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const LoadingSpinner = ({ description, className, id }) => {
+const LoadingSpinner = ({ description, className = "", id }) => {
   return (
     <svg
       className={className}
