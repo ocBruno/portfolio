@@ -9,11 +9,11 @@ const DropdownSelect = ({ items, defaultVal, handleValueChange }) => {
     isOpen,
     selectedItem,
     getToggleButtonProps,
-    getLabelProps,
     getMenuProps,
     highlightedIndex,
     getItemProps,
   } = useSelect({ items })
+
   const DropdownContainer = styled.div`
     /* Mobile */
     .dropdownContainer {
@@ -32,7 +32,6 @@ const DropdownSelect = ({ items, defaultVal, handleValueChange }) => {
       }
     }
   `
-
   return (
     <DropdownContainer>
       <button type="button" {...getToggleButtonProps()}>

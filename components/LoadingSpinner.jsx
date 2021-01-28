@@ -1,11 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-const LoadingSpinnerWrapper = styled.svg`
-  width: 40px;
-  align-self: center;
-`
+
 const LoadingSpinner = ({ description, className = "", id }) => {
+  const LoadingSpinnerWrapper = styled.svg`
+    width: 40px;
+    align-self: center;
+  `
   return (
     <LoadingSpinnerWrapper
       id={id}
