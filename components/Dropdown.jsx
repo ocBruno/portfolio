@@ -4,10 +4,14 @@ import styled from "styled-components"
 import { useSelect } from "downshift"
 import Arrow from "./Arrow"
 
-const DropdownSelect = ({ items, defaultVal, handleValueChange }) => {
+const DropdownSelect = ({
+  items,
+  defaultVal,
+  handleItemChange,
+  selectedItem,
+}) => {
   const {
     isOpen,
-    selectedItem,
     getToggleButtonProps,
     getMenuProps,
     highlightedIndex,
@@ -47,7 +51,7 @@ const DropdownSelect = ({ items, defaultVal, handleValueChange }) => {
               }
               key={`${item}${index}`}
               {...getItemProps({ item, index })}
-              onClick={() => handleValueChange(item)}
+              onClick={() => handleItemChange(item)}
             >
               {item}
             </li>
@@ -58,8 +62,8 @@ const DropdownSelect = ({ items, defaultVal, handleValueChange }) => {
 }
 DropdownSelect.propTypes = {
   items: PropTypes.array,
-  menuClassName: PropTypes.string,
+  selectedItem: PropTypes.string,
   defaultVal: PropTypes.string,
-  handleValueChange: PropTypes.func,
+  handleItemChange: PropTypes.func,
 }
 export default DropdownSelect

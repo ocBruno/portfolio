@@ -105,11 +105,13 @@ const MostPopularArticles = () => {
           <FilterInputsContainer>
             <DropdownSelect
               defaultVal={activeCategoryQuery}
-              handleValueChange={onActiveCategoryChange}
+              selectedItem={activeCategoryQuery}
+              handleItemChange={onActiveCategoryChange}
               items={CATEGORY_VALUES}
             />
             <DropdownSelect
-              handleValueChange={onActiveTimespanChange}
+              handleItemChange={onActiveTimespanChange}
+              selectedItem={activeTimespanQuery}
               defaultVal={activeTimespanQuery}
               items={TIMESPAN_VALUES}
             />
