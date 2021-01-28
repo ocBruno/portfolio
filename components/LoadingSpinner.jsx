@@ -1,14 +1,18 @@
 import React from "react"
 import PropTypes from "prop-types"
-
+import styled from "styled-components"
+const LoadingSpinnerWrapper = styled.svg`
+  width: 40px;
+  align-self: center;
+`
 const LoadingSpinner = ({ description, className = "", id }) => {
   return (
-    <svg
-      className={className}
+    <LoadingSpinnerWrapper
+      id={id}
       data-testid={id}
+      className={className}
       width="38"
       height="38"
-      id={id}
       viewBox="0 0 38 38"
       xmlns="http://www.w3.org/2000/svg"
       stroke="#252525"
@@ -29,7 +33,7 @@ const LoadingSpinner = ({ description, className = "", id }) => {
           </path>
         </g>
       </g>
-    </svg>
+    </LoadingSpinnerWrapper>
   )
 }
 

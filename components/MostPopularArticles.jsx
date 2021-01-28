@@ -1,14 +1,13 @@
-import React, { Fragment } from "react"
+import React, { useState } from "react"
+import styled from "styled-components"
 
 import LoadingSpinner from "./LoadingSpinner.jsx"
 import ImageArticle from "./ImageArticle.jsx"
 import TextArticle from "./TextArticle.jsx"
 
 import { apiStates, useApi } from "../hooks/useApi.jsx"
-import { useSelect } from "../helpers/input.js"
 
-import styles from "../styles/MostPopularArticles.module.scss"
-import selectStyles from "../styles/Select.module.scss"
+import DropdownSelect from "./Dropdown.jsx"
 
 // MOST POPULAR ARTICLES FILTER OPTIONS
 // string names mapped to equivalents
@@ -19,6 +18,7 @@ export const API_MAPPED_TIMESPANS = {
   Weekly: 7,
   Monthly: 30,
 }
+
 // if article was shared, emailed, or viewed
 export const API_MAPPED_CATEGORIES = {
   Emailed: "emailed",
@@ -37,38 +37,58 @@ const MostPopularArticles = () => {
    * NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
    *  in .env.local file root directory
    */
-
+  const ArticlesContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  `
+  const ArticlesRow = styled.h2`
+    width: 60rem;
+    margin-bottom: 1.2rem;
+    font-size: 18px;
+  `
+  const FilterInputsContainer = styled.div`
+    display: flex;
+    width: 60rem;
+    margin-bottom: 2rem;
+  `
   const NY_MOST_SHARED_API_KEY = process.env.NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
 
-  const [activeCategory, CategorySelectInput] = useSelect({
-    name: "CategorySelectInput",
-    values: CATEGORY_VALUES,
-    className: selectStyles.selectCss,
-  })
+  const [activeCategoryQuery, setActiveCategoryQuery] = useState(
+    CATEGORY_VALUES[0]
+  )
 
-  const [activeTimespan, TimespanSelectInput] = useSelect({
-    name: "TimespanSelectInput",
-    values: TIMESPAN_VALUES,
-    className: selectStyles.selectCss,
-  })
+  const [activeTimespanQuery, setActiveTimespanQuery] = useState(
+    TIMESPAN_VALUES[0]
+  )
 
+  const onActiveCategoryChange = (newValue) => {
+    setActiveCategoryQuery(newValue)
+  }
+
+  const onActiveTimespanChange = (newValue) => {
+    setActiveTimespanQuery(newValue)
+  }
   //  convert to API compatible category url param
-  // if type is shared include /facebook.json
-  const mappedActiveCategoryValue = API_MAPPED_CATEGORIES[activeCategory]
+  const mappedActiveCategoryValue = API_MAPPED_CATEGORIES[activeCategoryQuery]
 
-  //  convert to API compatible numerical url param
+  // if type is shared include /facebook.json
   const conditialSharedParameter =
     mappedActiveCategoryValue === "shared" ? "/facebook" : ""
 
+  //  convert to API compatible numerical url param
   const mappedActiveTimespanValue =
-    API_MAPPED_TIMESPANS[activeTimespan] + conditialSharedParameter
+    API_MAPPED_TIMESPANS[activeTimespanQuery] + conditialSharedParameter
 
   //  set active state error and data according to api response
   const { state, error, data } = useApi(
     {
       url: `https://api.nytimes.com/svc/mostpopular/v2/${mappedActiveCategoryValue}/${mappedActiveTimespanValue}.json?api-key=${NY_MOST_SHARED_API_KEY}`,
     },
-    [activeTimespan, activeCategory]
+    [activeTimespanQuery, activeCategoryQuery]
   )
 
   // handle component states
@@ -80,12 +100,20 @@ const MostPopularArticles = () => {
       return <div>Oops try again later</div>
     case apiStates.SUCCESS:
       return (
-        <div className={styles.articlesContainer}>
-          <h2 className={styles.articlesRow}>Most popular NY times articles</h2>
-          <div className={styles.filterInputsContainer}>
-            <Fragment>{CategorySelectInput}</Fragment>
-            <Fragment>{TimespanSelectInput}</Fragment>
-          </div>
+        <ArticlesContainer>
+          <ArticlesRow>Most popular NY times articles</ArticlesRow>
+          <FilterInputsContainer>
+            <DropdownSelect
+              defaultVal={activeCategoryQuery}
+              handleValueChange={onActiveCategoryChange}
+              items={CATEGORY_VALUES}
+            />
+            <DropdownSelect
+              handleValueChange={onActiveTimespanChange}
+              defaultVal={activeTimespanQuery}
+              items={TIMESPAN_VALUES}
+            />
+          </FilterInputsContainer>
 
           {data.map((article, i) => {
             let isImageAvailable, imgSrc
@@ -120,14 +148,13 @@ const MostPopularArticles = () => {
               )
             }
           })}
-        </div>
+        </ArticlesContainer>
       )
     default:
       return (
         <LoadingSpinner
           id="articlesLoadingSpinner"
           description="A spinner showing the app is loading."
-          className={styles.loadingSpinner}
         />
       )
   }

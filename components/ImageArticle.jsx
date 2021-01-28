@@ -1,23 +1,48 @@
 import React from "react"
 import PropTypes from "prop-types"
-
-import styles from "../styles/ImageArticle.module.scss"
+import styled from "styled-components"
 
 const ImageArticle = ({ source, title, link, imgSrc, id }) => {
+  const ImageArticleContainer = styled.div`
+    width: 30rem;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    @media (min-width: 800px) {
+      margin-right: 0;
+      margin-bottom: auto;
+      margin-top: 2rem;
+    }
+  `
+  const ImageArticleHeader = styled.h2`
+    font-size: 11pt;
+    width: 88%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
+    @media (min-width: 800px) {
+      font-size: 14pt;
+    }
+  `
+  const ImageArticleSource = styled.h5`
+    font-size: 12px;
+    margin-bottom: 1rem;
+  `
+  const ImageArticleImage = styled.img`
+    width: 88%;
+    border-radius: 12px;
+  `
   return (
-    <div
-      key={id}
-      id={id}
-      data-testid={id}
-      className={styles.imageArticleContainer}
-    >
+    <ImageArticleContainer key={id} id={id} data-testid={id}>
       <a href={link}>
-        <h2 className={styles.imageArticleHeader}>{title}</h2>
-        <h5 className={styles.imageArticleSource}>{source}</h5>
+        <ImageArticleHeader>{title}</ImageArticleHeader>
+        <ImageArticleSource>{source}</ImageArticleSource>
 
-        <img className={styles.imageArticleImage} src={imgSrc} />
+        <ImageArticleImage src={imgSrc} />
       </a>
-    </div>
+    </ImageArticleContainer>
   )
 }
 

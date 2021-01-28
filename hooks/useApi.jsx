@@ -1,5 +1,11 @@
 import React from "react"
-import fetch from "cross-fetch"
+import _fetch from "cross-fetch"
+const {
+  AbortController,
+  abortableFetch,
+} = require("abortcontroller-polyfill/dist/cjs-ponyfill")
+
+const { fetch } = abortableFetch(_fetch)
 
 export const apiStates = {
   LOADING: "LOADING",
