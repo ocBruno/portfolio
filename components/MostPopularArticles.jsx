@@ -9,6 +9,30 @@ import { apiStates, useApi } from "../hooks/useApi.jsx"
 
 import DropdownSelect from "./Dropdown.jsx"
 
+const ArticlesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`
+const ArticlesRow = styled.h2`
+  width: 60rem;
+  margin-bottom: 1.2rem;
+  font-size: 18px;
+`
+const FilterInputsContainer = styled.div`
+  display: flex;
+  width: 60rem;
+  margin-bottom: 2rem;
+`
+const CategorySelect = styled(DropdownSelect)`
+  width: 130px;
+`
+const TimespanSelect = styled(DropdownSelect)`
+  width: 71px;
+`
 // MOST POPULAR ARTICLES FILTER OPTIONS
 // string names mapped to equivalents
 
@@ -37,24 +61,7 @@ const MostPopularArticles = () => {
    * NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
    *  in .env.local file root directory
    */
-  const ArticlesContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  `
-  const ArticlesRow = styled.h2`
-    width: 60rem;
-    margin-bottom: 1.2rem;
-    font-size: 18px;
-  `
-  const FilterInputsContainer = styled.div`
-    display: flex;
-    width: 60rem;
-    margin-bottom: 2rem;
-  `
+
   const NY_MOST_SHARED_API_KEY = process.env.NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
 
   const [activeCategoryQuery, setActiveCategoryQuery] = useState(
@@ -103,13 +110,13 @@ const MostPopularArticles = () => {
         <ArticlesContainer>
           <ArticlesRow>Most popular NY times articles</ArticlesRow>
           <FilterInputsContainer>
-            <DropdownSelect
+            <CategorySelect
               defaultVal={activeCategoryQuery}
               selectedItem={activeCategoryQuery}
               handleItemChange={onActiveCategoryChange}
               items={CATEGORY_VALUES}
             />
-            <DropdownSelect
+            <TimespanSelect
               handleItemChange={onActiveTimespanChange}
               selectedItem={activeTimespanQuery}
               defaultVal={activeTimespanQuery}
