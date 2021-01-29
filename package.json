@@ -12,6 +12,7 @@
   "dependencies": {
     "abortcontroller-polyfill": "^1.7.1",
     "downshift": "^6.1.0",
+    "lodash.debounce": "^4.0.8",
     "match-sorter": "^6.1.0",
     "next": "^10.0.5",
     "react": "^17.0.1",

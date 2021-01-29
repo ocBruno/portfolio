@@ -1,5 +1,7 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import styled from "styled-components"
+import debounce from "lodash.debounce"
+import { matchSorter } from "match-sorter"
 
 import LoadingSpinner from "./LoadingSpinner.jsx"
 import ImageArticle from "./ImageArticle.jsx"
@@ -33,6 +35,16 @@ const CategorySelect = styled(DropdownSelect)`
 const TimespanSelect = styled(DropdownSelect)`
   width: 71px;
 `
+const SearchInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+const SearchInputLabel = styled.span`
+  font-size: 10px;
+  margin-right: 6px;
+  font-weight: 600;
+`
+const SearchInput = styled.input``
 // MOST POPULAR ARTICLES FILTER OPTIONS
 // string names mapped to equivalents
 
@@ -71,6 +83,7 @@ const MostPopularArticles = () => {
   const [activeTimespanQuery, setActiveTimespanQuery] = useState(
     TIMESPAN_VALUES[0]
   )
+  const [activeFilterQuery, setActiveFilterQuery] = useState("")
 
   const onActiveCategoryChange = (newValue) => {
     setActiveCategoryQuery(newValue)
@@ -79,6 +92,7 @@ const MostPopularArticles = () => {
   const onActiveTimespanChange = (newValue) => {
     setActiveTimespanQuery(newValue)
   }
+
   //  convert to API compatible category url param
   const mappedActiveCategoryValue = API_MAPPED_CATEGORIES[activeCategoryQuery]
 
@@ -97,6 +111,28 @@ const MostPopularArticles = () => {
     },
     [activeTimespanQuery, activeCategoryQuery]
   )
+  const updateArticlesByQuery = (query) => {
+    setActiveFilterQuery(query)
+  }
+  const debouncedUpdateArticlesByQuery = useCallback(
+    debounce(updateArticlesByQuery, 500),
+    []
+  )
+
+  const handleFilterQueryChange = (e) => {
+    const query = e.target.value
+    debouncedUpdateArticlesByQuery(query)
+  }
+  const articles = data
+
+  const articleTitles = articles.map((article) => article.title)
+
+  const activeArticlesData =
+    activeFilterQuery.length > 0
+      ? matchSorter(articleTitles, activeFilterQuery).map((articleTitle) =>
+          articles.find((article) => article.title === articleTitle)
+        )
+      : articles
 
   // handle component states
   switch (state) {
@@ -122,9 +158,13 @@ const MostPopularArticles = () => {
               defaultVal={activeTimespanQuery}
               items={TIMESPAN_VALUES}
             />
+            <SearchInputContainer>
+              <SearchInputLabel>Filter</SearchInputLabel>
+              <SearchInput onChange={(e) => handleFilterQueryChange(e)} />
+            </SearchInputContainer>
           </FilterInputsContainer>
 
-          {data.map((article, i) => {
+          {activeArticlesData.map((article, i) => {
             let isImageAvailable, imgSrc
 
             if (article.media[0]) {
