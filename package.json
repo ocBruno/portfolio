@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --hostname 192.168.0.16",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",

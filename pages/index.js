@@ -6,8 +6,15 @@ const PageContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
   align-items: flex-start;
   line-height: 1.2;
+  border-top: 1px solid rgb(210, 210, 210);
+  border-left: 1px solid rgb(210, 210, 210);
+  border-top-left-radius: 9px;
+  margin-top: 6px;
+  margin-left: 6px;
+  height: 100vh;
   @media (min-width: 800px) {
     padding: 2rem;
     display: flex;
@@ -35,12 +42,12 @@ const UserHeaderContainer = styled.header`
     width: 100%;
     flex-flow: wrap;
     margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
   }
 `
 const UserNameHeader = styled.h2`
   display: inline-flex;
   vertical-align: top;
-  margin-right: auto;
 `
 const UserName = styled.div`
   white-space: nowrap;
@@ -58,27 +65,27 @@ const UserImage = styled.img`
   width: 14vw;
   display: inline-flex;
   height: auto;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
   border-radius: 100%;
   @media (min-width: 800px) {
-    margin-bottom: -83px;
-    margin-top: 54px;
-    width: 90px;
+    width: 60px;
+    margin-top: -21px;
   }
 `
-const UserHeader = styled.h2`
+const UserDescriptionHeader = styled.h2`
   margin-bottom: 1rem;
   width: 100%;
 `
 const UserDescription = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   margin-right: auto;
   font-size: 12px;
   margin-bottom: 1rem;
   @media (min-width: 800px) {
     width: auto;
-    max-width: 39rem;
+    margin-right: 47rem;
   }
 `
 const ProjectsDescription = styled.main`
@@ -88,16 +95,17 @@ const ProjectsDescription = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 `
 const ProjectLink = styled.a`
   margin-top: 0.9rem;
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 0.9rem;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgb(210, 210, 210);
   padding-bottom: 0.3rem;
   &::before {
+    color: rgb(210, 210, 210);
     content: "⇨ ";
   }
 `
@@ -110,20 +118,20 @@ export default function Home() {
       </Head>
       <BgImg src="./bgImg.jpg" />
       <UserHeaderContainer>
+        <UserImage src="./userImg.jpg" />
         <UserNameHeader>
           <UserName>Bruno Costa</UserName>
           <UserGithub href="https://github.com/ocBruno">github</UserGithub>
         </UserNameHeader>
-        <UserImage src="./userImg.jpg" />
-        <UserHeader> Open to work </UserHeader>
-        <UserDescription>
-          Professional office and remote experience with frontend web
-          development using HTML5, CSS, Javascript, React and other
-          frameworks/libraries in an agile team participating in daily / weekly
-          tech meetings in English and Portuguese. Currently focusing on react,
-          nextjs and react native until my next professional opportunity arises.
-        </UserDescription>
       </UserHeaderContainer>
+      <UserDescriptionHeader> Open to work </UserDescriptionHeader>
+      <UserDescription>
+        Professional office and remote experience with frontend web development
+        using HTML5, CSS, Javascript, React and other frameworks/libraries in an
+        agile team participating in daily / weekly tech meetings in English and
+        Portuguese. Currently focusing on react, nextjs and react native until
+        my next professional opportunity arises.
+      </UserDescription>
       <ProjectsDescription>
         <h5> Check out my most recent next js project pages</h5>
         <ProjectLink
@@ -132,12 +140,6 @@ export default function Home() {
         >
           Most popular articles component integrated to NY times news api with
           custom hooks!
-        </ProjectLink>
-        <ProjectLink
-          alt="Check out my login page with context and reducers for state management!"
-          href="/login"
-        >
-          Login page with context and reducers for state management!
         </ProjectLink>
       </ProjectsDescription>
     </PageContainer>
