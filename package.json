@@ -10,6 +10,7 @@
     "updateSnap": "jest --updateSnapshot"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "abortcontroller-polyfill": "^1.7.1",
     "downshift": "^6.1.0",
     "lodash.debounce": "^4.0.8",

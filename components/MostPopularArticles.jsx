@@ -3,13 +3,13 @@ import styled from "styled-components"
 import debounce from "lodash.debounce"
 import { matchSorter } from "match-sorter"
 
+import { apiStates, useApi } from "../hooks/useApi.jsx"
+import { NY_TIMES_API_KEY } from "../helpers/nytimes"
+
+import DropdownSelect from "./Dropdown.jsx"
 import LoadingSpinner from "./LoadingSpinner.jsx"
 import ImageArticle from "./ImageArticle.jsx"
 import TextArticle from "./TextArticle.jsx"
-
-import { apiStates, useApi } from "../hooks/useApi.jsx"
-
-import DropdownSelect from "./Dropdown.jsx"
 
 const ArticlesContainer = styled.div`
   display: flex;
@@ -70,11 +70,9 @@ const MostPopularArticles = () => {
    *  place corresponding key from NY TIMES APIs
    * Most Popular API
    * named
-   * NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
+   * NEXT_PUBLIC_NY_TIMES_API_KEY
    *  in .env.local file root directory
    */
-
-  const NY_MOST_SHARED_API_KEY = process.env.NEXT_PUBLIC_NY_MOST_SHARED_API_KEY
 
   const [activeCategoryQuery, setActiveCategoryQuery] = useState(
     CATEGORY_VALUES[0]
@@ -107,7 +105,7 @@ const MostPopularArticles = () => {
   //  set active state error and data according to api response
   const { state, error, data } = useApi(
     {
-      url: `https://api.nytimes.com/svc/mostpopular/v2/${mappedActiveCategoryValue}/${mappedActiveTimespanValue}.json?api-key=${NY_MOST_SHARED_API_KEY}`,
+      url: `https://api.nytimes.com/svc/mostpopular/v2/${mappedActiveCategoryValue}/${mappedActiveTimespanValue}.json?api-key=${NY_TIMES_API_KEY}`,
     },
     [activeTimespanQuery, activeCategoryQuery]
   )

@@ -141,6 +141,12 @@ export default function Home() {
           Most popular articles component integrated to NY times news api with
           custom hooks!
         </ProjectLink>
+        <ProjectLink
+          alt="Pre-rendered headline news using nextjs getStaticProps()"
+          href="/news/headline"
+        >
+          Pre-rendered headline news using nextjs getStaticProps()
+        </ProjectLink>
       </ProjectsDescription>
     </PageContainer>
   )

@@ -32,6 +32,7 @@ const NyTimesSvg = styled.svg`
   fill: #000;
   height: 30px;
 `
+
 export default function News() {
   return (
     <PageContainer>
