@@ -26,6 +26,7 @@ const OpenButton = styled.button`
   outline: none;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
   &:focus {
     border: none;
   }
@@ -35,6 +36,9 @@ const DropdownItems = styled.ul`
   font-size: 10pt;
   outline: none;
   margin-left: 6px;
+  position: absolute;
+  background: white;
+  border-radius: 3px;
 `
 const DropdownItem = styled.li`
   margin-top: 6px;

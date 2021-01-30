@@ -133,6 +133,12 @@ export default function Home() {
           Most popular articles component integrated to NY times news api with
           custom hooks!
         </ProjectLink>
+        <ProjectLink
+          alt="Check out my login page with context and reducers for state management!"
+          href="/login"
+        >
+          Login page with context and reducers for state management!
+        </ProjectLink>
       </ProjectsDescription>
     </PageContainer>
   )

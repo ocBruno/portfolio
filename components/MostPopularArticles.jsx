@@ -40,8 +40,8 @@ const SearchInputContainer = styled.div`
   align-items: center;
 `
 const SearchInputLabel = styled.span`
-  font-size: 10px;
-  margin-right: 6px;
+  font-size: 12px;
+  margin-right: 12px;
   font-weight: 600;
 `
 const SearchInput = styled.input``
