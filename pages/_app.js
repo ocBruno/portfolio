@@ -1,8 +1,13 @@
 import "../styles/globals.scss"
 import PropTypes from "prop-types"
+import { ThemeProvider } from "../contexts/state-management-context"
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
 
 MyApp.propTypes = {
