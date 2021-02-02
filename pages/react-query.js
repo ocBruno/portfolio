@@ -1,23 +1,20 @@
 import Head from "next/head"
 import styled from "styled-components"
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "react-query"
+import { QueryClient, QueryClientProvider } from "react-query"
+
 import TopStory from "../components/react-query/TopStory"
 
 const PageContainer = styled.div`
-  min-height: 100vh;
   background: rgb(252, 252, 252);
-  padding: 2.4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
 `
+// initiate query client and pass to provider
+// for queries to be accessible within children components
 const queryClient = new QueryClient()
 
 export default function ReactQuery() {
@@ -25,7 +22,7 @@ export default function ReactQuery() {
     <QueryClientProvider client={queryClient}>
       <PageContainer>
         <Head>
-          <title>Ny Times News</title>
+          <title>Top global articles</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <TopStory />

@@ -4,8 +4,8 @@ export const getTopStory = async () => {
   return await fetch(
     `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${NY_TIMES_API_KEY}`
   )
-    .then((data) => {
-      return data
+    .then((res) => {
+      return res.json()
     })
     .catch((err) => {
       return err
