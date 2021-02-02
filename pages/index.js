@@ -152,6 +152,12 @@ export default function Home() {
           href="/state-management"
         >
           Simple state management page using useReducer hook and context
+        </ProjectLink>{" "}
+        <ProjectLink
+          alt="State management using useReducer hook"
+          href="/react-query"
+        >
+          Implement react query for managing server side state efficiently
         </ProjectLink>
       </ProjectsDescription>
     </PageContainer>

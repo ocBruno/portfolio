@@ -1,34 +1,8 @@
+# Description
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) which integrates NYtimes Most Popular API and is aimed at having reusable structures, patterns, components, screens and helpers for future test driven React or Next.js projects.
 
-## TODO
-
-☒ Integrate NY times news api with custom hook
-
-☒ Add Eslint and babel
-
-☒ Fix up home page content and responsive design
-
-☒ Update test readme
-
-☐ Research necessary topics react/next testing with jest, define types of tests to be completed
-
-☐ Add jest and create initial tests for MostPopularArticles
-
-☐ Improve Home page and News design
-
-☐ Test following components and files, useApi.js, news.js, index.js, ImageArticle.jsx, TextArticle.jsx, input.js
-
-☐ Brainstorm other functionalities with high chance of reusal in the future
-
-☐ .....
-
 ## Getting Started
-
-Set up necessary api keys:
-
-- NY times most popular news api with custom hook (https://developer.nytimes.com/)
-
-Take a good look through this file and remember to read the code comments!
 
 First, use npm or yarn to install project dependencies and dev to run the development server:
 
