@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { useQuery } from "react-query"
 
-import { getTopStory } from "../../helpers/queries/getTopStory"
+import { getTopArticle } from "../../helpers/queries/getTopArticle"
 
 const ArticlesContainer = styled.div`
   overflow-y: scroll;
@@ -45,12 +45,15 @@ const ArticleTitleLink = styled.a`
 `
 
 const TopStory = () => {
-  const { isLoading, isError, data, error } = useQuery("topStory", getTopStory)
+  const { isLoading, isError, data, error } = useQuery(
+    "topStory",
+    getTopArticle
+  )
 
   // access query client and invalidate query example
   // const queryClient = useQueryClient()
   // Invalidate and refetch queries after mutation
-  // const mutation = useMutation(getTopStory, {
+  // const mutation = useMutation(getTopArticle, {
   //   onSuccess: () => {
   //     queryClient.invalidateQueries("todos")
   //   },

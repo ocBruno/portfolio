@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { QueryClient, QueryClientProvider } from "react-query"
 
 import TopStory from "../components/react-query/TopStory"
+import SearchContainer from "../components/react-query/SearchContainer"
 
 const PageContainer = styled.div`
   background: rgb(252, 252, 252);
@@ -25,6 +26,8 @@ export default function ReactQuery() {
           <title>Top global articles</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
+        <SearchContainer />
         <TopStory />
       </PageContainer>
     </QueryClientProvider>
