@@ -49,6 +49,9 @@ const ToggleSearchResultsButton = styled(ArrowIcon)`
 const SearchResultsWrapper = styled.div`
   height: ${(props) => (props.isActive ? "12rem" : 0)};
   margin-top: 1rem;
+  background: white;
+  position: relative;
+  top: 1rem;
   overflow-y: scroll;
   transition: height 300ms ease-in;
   /* width */

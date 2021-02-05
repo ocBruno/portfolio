@@ -43,8 +43,8 @@ export default function ReactQuery() {
         </Head>
         <MenuContainer toggleMenu={toggleMenu} isActive={isMenuActive} />
         <PageContentContainer>
-          <MenuIcon onClick={() => toggleMenu()} />
           <SearchContainer />
+          <MenuIcon onClick={() => toggleMenu()} />
 
           <TopStory />
         </PageContentContainer>

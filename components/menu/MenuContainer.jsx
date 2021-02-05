@@ -11,6 +11,7 @@ const MenuContainerWrapper = styled.div`
   width: ${(props) => (props.isActive ? " 20%" : 0)};
   height: 100vh;
   padding: 1rem;
+  z-index: 1;
   background: white;
   border: 1px solid black;
   opacity: ${(props) => (props.isActive ? 1 : 0)};
