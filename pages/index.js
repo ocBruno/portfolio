@@ -14,7 +14,7 @@ const PageContainer = styled.div`
   border-top-left-radius: 9px;
   margin-top: 6px;
   margin-left: 6px;
-  height: 100vh;
+  min-height: 100vh;
   @media (min-width: 800px) {
     padding: 2rem;
     display: flex;

@@ -7,7 +7,7 @@ import { getTopArticle } from "../../helpers/queries/getTopArticle"
 const ArticlesContainer = styled.div`
   overflow-y: scroll;
   height: 1000px;
-  padding: 2.4rem;
+  margin-top: 2.4rem;
   width: 100%;
 
   /* width */

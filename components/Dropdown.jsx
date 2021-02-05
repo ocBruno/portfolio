@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { useSelect } from "downshift"
-import Arrow from "./Arrow"
+import ArrowIcon from "./icons/ArrowIcon"
 
 const DropdownContainer = styled.div`
   /* Mobile */
@@ -66,7 +66,7 @@ const DropdownSelect = ({
     <DropdownContainer className={className}>
       <OpenButton type="button" {...getToggleButtonProps()}>
         {selectedItem || defaultVal || "Elements"}
-        <Arrow />
+        <ArrowIcon />
       </OpenButton>
       <DropdownItems {...getMenuProps()}>
         {isOpen &&
