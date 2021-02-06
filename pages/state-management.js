@@ -1,10 +1,7 @@
 import Head from "next/head"
 import styled from "styled-components"
 
-import {
-  useThemeDispatch,
-  useThemeState,
-} from "../contexts/state-management-context"
+import { useThemeDispatch, useThemeState } from "../contexts/theme-context"
 
 const PageContainer = styled.div`
   display: flex;

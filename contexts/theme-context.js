@@ -6,7 +6,7 @@ const ThemeStateContext = createContext()
 const ThemeDispatchContext = createContext()
 
 const initialState = {
-  theme: "dark",
+  theme: "light",
 }
 
 const stateReducer = (state, action) => {

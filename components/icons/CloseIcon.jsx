@@ -1,10 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-const CloseIconSvg = styled.svg`
+import ThemedSvg from "../themed/ThemedSvg"
+
+const CloseIconSvg = styled(ThemedSvg)`
   margin-left: 0.21rem;
   border-radius: 100%;
+  cursor: pointer;
 `
+
 const CloseIcon = ({ onClick, className }) => {
   return (
     <CloseIconSvg

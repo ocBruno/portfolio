@@ -1,18 +1,19 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import ThemedSvg from "../themed/ThemedSvg"
 
-const SearchIconSvg = styled.svg`
+const SearchIconSvg = styled(ThemedSvg)`
   display: inline-flex;
   cursor: pointer;
 `
+
 const SearchIconPath = styled.path``
 const SearchIcon = ({ onClick, className }) => {
   return (
     <SearchIconSvg
       className={className}
       onClick={onClick}
-      xmlns="http://www.w3.org/2000/svg"
       width="21"
       height="21"
       viewBox="0 0 24 24"

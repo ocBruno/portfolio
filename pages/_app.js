@@ -1,6 +1,6 @@
 import "../styles/globals.scss"
 import PropTypes from "prop-types"
-import { ThemeProvider } from "../contexts/state-management-context"
+import { ThemeProvider } from "../contexts/theme-context"
 
 function MyApp({ Component, pageProps }) {
   return (

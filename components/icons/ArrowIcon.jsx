@@ -1,11 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+
 const ArrowIconSvg = styled.svg`
   width: 12px;
   margin-left: 0.21rem;
   border-radius: 100%;
 `
+
 const ArrowIcon = ({ onClick, className }) => {
   return (
     <ArrowIconSvg
@@ -22,9 +24,6 @@ const ArrowIcon = ({ onClick, className }) => {
   )
 }
 
-ArrowIcon.propTypes = {
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-}
+ArrowIcon.propTypes = {}
 
 export default ArrowIcon

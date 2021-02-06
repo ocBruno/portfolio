@@ -1,8 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import ThemedSvg from "../themed/ThemedSvg"
 
-const MenuIconSvg = styled.svg`
+const MenuIconSvg = styled(ThemedSvg)`
   display: inline-flex;
   cursor: pointer;
 `

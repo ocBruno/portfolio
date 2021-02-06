@@ -58,6 +58,9 @@ const SearchResults = ({ activeQueryValue, isFetchResultsPending }) => {
   )
 }
 
-SearchResults.propTypes = {}
+SearchResults.propTypes = {
+  activeQueryValue: PropTypes.string,
+  isFetchResultsPending: PropTypes.bool,
+}
 
 export default SearchResults

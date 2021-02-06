@@ -3,8 +3,9 @@ import styled from "styled-components"
 import { useQuery } from "react-query"
 
 import { getTopArticle } from "../../helpers/queries/getTopArticle"
+import ThemedContainer from "../themed/ThemedContainer"
 
-const ArticlesContainer = styled.div`
+const ArticlesContainer = styled(ThemedContainer)`
   overflow-y: scroll;
   height: 1000px;
   margin-top: 2.4rem;
@@ -38,8 +39,10 @@ const TopStoryTitle = styled.h2`
 const ArticleTitleLink = styled.a`
   display: flex;
   margin-bottom: 0.6rem;
-  color: rgb(30, 30, 30);
   font-size: 12px;
+  color: ${(props) =>
+    props.theme.shade === "dark" ? "rgb(252, 252, 252)" : "rgb(0,0,0)"};
+
   font-family: Roboto;
   text-decoration: none;
 `
@@ -49,15 +52,6 @@ const TopStory = () => {
     "topStory",
     getTopArticle
   )
-
-  // access query client and invalidate query example
-  // const queryClient = useQueryClient()
-  // Invalidate and refetch queries after mutation
-  // const mutation = useMutation(getTopArticle, {
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries("todos")
-  //   },
-  // })
 
   if (isLoading) {
     return <span>Loading</span>

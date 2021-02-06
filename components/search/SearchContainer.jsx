@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import ArrowIcon from "../icons/ArrowIcon"
 import SearchIcon from "../icons/SearchIcon"
+import ThemedContainer from "../themed/ThemedContainer"
 
 import SearchResults from "./SearchResults"
 
-const SearchContainerWrapper = styled.div`
+const SearchContainerWrapper = styled(ThemedContainer)`
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -1,19 +1,20 @@
 import Head from "next/head"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 import { QueryClient, QueryClientProvider } from "react-query"
 
-import TopStory from "../components/react-query/TopStory"
+import TopStoryContainer from "../components/widgets/TopStoryContainer"
 import SearchContainer from "../components/search/SearchContainer"
 import MenuContainer from "../components/menu/MenuContainer"
 import MenuIcon from "../components/icons/MenuIcon"
 import { useState } from "react"
+import ConfigurationsContainer from "../components/configurations/ConfigurationsContainer"
+import { useThemeState } from "../contexts/theme-context"
+import Container from "../components/themed/ThemedContainer"
 
 const PageContainer = styled.div`
-  background: rgb(252, 252, 252);
   display: flex;
 `
-const PageContentContainer = styled.div`
-  background: rgb(252, 252, 252);
+const PageContentContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,27 +29,48 @@ const PageContentContainer = styled.div`
 const queryClient = new QueryClient()
 
 export default function ReactQuery() {
+  const { theme } = useThemeState()
+  console.log(theme)
   const [isMenuActive, setIsMenuActive] = useState(false)
+
+  const [isConfigurationsActive, setIsConfigurationsActive] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive)
   }
 
+  const toggleConfigurations = () => {
+    setIsConfigurationsActive(!isConfigurationsActive)
+    if (isMenuActive) {
+      toggleMenu()
+    }
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
-      <PageContainer>
-        <Head>
-          <title>Top global articles</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <MenuContainer toggleMenu={toggleMenu} isActive={isMenuActive} />
-        <PageContentContainer>
-          <SearchContainer />
-          <MenuIcon onClick={() => toggleMenu()} />
+      <ThemeProvider theme={{ shade: theme }}>
+        <PageContainer>
+          <Head>
+            <title>Top global articles</title>
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <MenuContainer
+            toggleMenu={toggleMenu}
+            toggleConfigurations={toggleConfigurations}
+            isActive={isMenuActive}
+          />
+          <ConfigurationsContainer
+            toggleConfigurations={toggleConfigurations}
+            isActive={isConfigurationsActive}
+          />
+          <PageContentContainer>
+            <SearchContainer />
+            <MenuIcon onClick={() => toggleMenu()} />
 
-          <TopStory />
-        </PageContentContainer>
-      </PageContainer>
+            <TopStoryContainer />
+          </PageContentContainer>
+        </PageContainer>
+      </ThemeProvider>
     </QueryClientProvider>
   )
 }

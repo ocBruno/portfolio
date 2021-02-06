@@ -1,9 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import CloseIcon from "../icons/CloseIcon"
 import { useRouter } from "next/router"
-const MenuContainerWrapper = styled.div`
+
+import CloseIcon from "../icons/CloseIcon"
+import ConfigurationsIcon from "../icons/ConfigurationsIcon"
+import ThemedContainer from "../themed/ThemedContainer"
+
+const MenuContainerWrapper = styled(ThemedContainer)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -12,51 +16,54 @@ const MenuContainerWrapper = styled.div`
   height: 100vh;
   padding: 1rem;
   z-index: 1;
-  background: white;
-  border: 1px solid black;
+  box-shadow: -6px 0px 24px #333338;
   opacity: ${(props) => (props.isActive ? 1 : 0)};
   transition: all 300ms ease-in;
   overflow: hidden;
 `
 
-const MenuHeader = styled.h2`
+const MenuTopRow = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
   margin-bottom: 1rem;
-  cursor: pointer;
 `
-const MenuOption = styled.h3`
+const ConfigurationsIconWrapper = styled(ConfigurationsIcon)`
+  margin-left: auto;
+`
+const MenuHeader = styled.h2``
+const NavOption = styled.h3`
   margin-bottom: 0.3rem;
   cursor: pointer;
 `
 
-const MenuContainer = ({ isActive, toggleMenu }) => {
+const MenuContainer = ({ isActive, toggleMenu, toggleConfigurations }) => {
   const router = useRouter()
-  const handleMenuOptionClick = (e, href) => {
+
+  const handleNavOptionClick = (e, href) => {
     e.preventDefault()
     router.push(href)
   }
   return (
     <MenuContainerWrapper isActive={isActive}>
-      <MenuHeader onClick={() => toggleMenu()}>
-        Menu <CloseIcon />{" "}
-      </MenuHeader>
-      <MenuOption onClick={(e) => handleMenuOptionClick(e, "/")}>
-        Home
-      </MenuOption>
-      <MenuOption onClick={(e) => handleMenuOptionClick(e, "/news")}>
+      <MenuTopRow>
+        <MenuHeader onClick={() => toggleMenu()}>Menu</MenuHeader>
+        <ConfigurationsIconWrapper onClick={() => toggleConfigurations()} />
+        <CloseIcon onClick={() => toggleMenu()} />
+      </MenuTopRow>
+      <NavOption onClick={(e) => handleNavOptionClick(e, "/")}>Home</NavOption>
+      <NavOption onClick={(e) => handleNavOptionClick(e, "/news")}>
         Most Popular
-      </MenuOption>
-      <MenuOption onClick={(e) => handleMenuOptionClick(e, "/news/headline")}>
+      </NavOption>
+      <NavOption onClick={(e) => handleNavOptionClick(e, "/news/headline")}>
         Top Story
-      </MenuOption>
+      </NavOption>
     </MenuContainerWrapper>
   )
 }
-
 MenuContainer.propTypes = {
+  toggleConfigurations: PropTypes.func,
+  toggleMenu: PropTypes.func,
   isActive: PropTypes.bool,
 }
-
 export default MenuContainer
