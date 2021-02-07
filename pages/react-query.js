@@ -1,4 +1,5 @@
 import Head from "next/head"
+import PropTypes from "prop-types"
 import { useState } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { QueryClient, QueryClientProvider } from "react-query"
@@ -11,6 +12,10 @@ import ConfigurationsContainer from "../components/configurations/Configurations
 import TopArticlesContainer from "../components/widgets/TopArticlesContainer"
 
 import { useThemeState } from "../contexts/theme-context"
+
+import { NY_TIMES_API_KEY } from "../helpers/nytimes"
+import { getHeadlineArticle } from "../helpers/queries/getHeadlineArticle"
+import HeadlineArticleContainer from "../components/widgets/HeadlineArticleContainer"
 
 const PageContainer = styled.div`
   display: flex;
@@ -25,13 +30,21 @@ const PageContentContainer = styled(Container)`
   width: 100vw;
   min-height: 100vh;
 `
+export async function getStaticProps() {
+  // for headline news fetch TopArticles for world
+
+  const headlineArticle = await getHeadlineArticle()
+  return {
+    props: { headlineArticle },
+  }
+}
+
 // initiate query client and pass to provider
 // for queries to be accessible within children components
 const queryClient = new QueryClient()
 
-export default function ReactQuery() {
+function ReactQuery({ headlineArticle }) {
   const { theme } = useThemeState()
-  console.log(theme)
   const [isMenuActive, setIsMenuActive] = useState(false)
 
   const [isConfigurationsActive, setIsConfigurationsActive] = useState(false)
@@ -52,7 +65,7 @@ export default function ReactQuery() {
       <ThemeProvider theme={{ shade: theme }}>
         <PageContainer>
           <Head>
-            <title>Top global articles</title>
+            <title>React Query</title>
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <MenuContainer
@@ -67,7 +80,7 @@ export default function ReactQuery() {
           <PageContentContainer>
             <SearchContainer />
             <MenuIcon onClick={() => toggleMenu()} />
-
+            <HeadlineArticleContainer article={headlineArticle} />
             <TopArticlesContainer />
           </PageContentContainer>
         </PageContainer>
@@ -75,3 +88,7 @@ export default function ReactQuery() {
     </QueryClientProvider>
   )
 }
+ReactQuery.propTypes = {
+  headlineArticle: PropTypes.object,
+}
+export default ReactQuery

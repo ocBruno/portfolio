@@ -13,9 +13,9 @@ const ArticlesContainer = styled(ThemedScrollableContainer)`
   width: 100%;
 `
 const ArticleContainer = styled.div`
-  margin: 1rem;
+  margin: 2rem 2.7rem;
   padding: 1rem;
-  width: 115px;
+  width: 155px;
   border: 1px solid #ececec;
   border-radius: 3px;
   box-shadow: 2px 2px 2px #ececec;
@@ -29,6 +29,14 @@ const ArticleTitleLink = styled.a`
   display: flex;
   line-height: 1.3;
   font-size: 11px;
+  margin-bottom: 6px;
+  font-family: Roboto;
+  text-decoration: none;
+`
+const ArticleByline = styled.a`
+  display: flex;
+  line-height: 1.3;
+  font-size: 10px;
 
   font-family: Roboto;
   text-decoration: none;
@@ -48,7 +56,6 @@ const TopArticlesContainer = () => {
   }
 
   const results = data.results
-  console.log(results)
   return (
     <ArticlesContainer>
       {results.map((article, i) => {
@@ -60,6 +67,7 @@ const TopArticlesContainer = () => {
             <ArticleTitleLink href={article.url}>
               {article.title}
             </ArticleTitleLink>
+            <ArticleByline href={article.url}>{article.byline}</ArticleByline>
           </ArticleContainer>
         )
       })}

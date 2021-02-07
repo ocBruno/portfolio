@@ -142,22 +142,17 @@ export default function Home() {
           custom hooks
         </ProjectLink>
         <ProjectLink
-          alt="Pre-rendered headline news using nextjs getStaticProps()"
-          href="/news/headline"
-        >
-          Pre-rendered headline news using nextjs getStaticProps()
-        </ProjectLink>
-        <ProjectLink
           alt="State management using useReducer hook"
           href="/state-management"
         >
           Simple state management page using useReducer hook and context
         </ProjectLink>{" "}
         <ProjectLink
-          alt="State management using useReducer hook"
+          alt="React query rendered on server side"
           href="/react-query"
         >
-          Implement react query for managing server side state efficiently
+          Implement react query with server side rendering for managing server
+          side state efficiently
         </ProjectLink>
       </ProjectsDescription>
     </PageContainer>

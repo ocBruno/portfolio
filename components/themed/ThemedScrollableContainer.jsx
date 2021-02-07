@@ -1,7 +1,15 @@
 import styled from "styled-components"
 
 const ThemedScrollableContainer = styled.div`
-  /* width */
+  background: ${(props) =>
+    props.theme.shade === "dark" ? "rgb(30,30,30)" : "rgb(252, 252, 252)"};
+  color: ${(props) =>
+    props.theme.shade === "dark" ? "rgb(252, 252, 252)" : "rgb(51,51,51)"};
+  border-bottom: ${(props) =>
+    props.theme.shade === "dark"
+      ? "25px solid rgb(51,51,51)"
+      : "25px solid rgb(252, 252, 252)"};
+
   &::-webkit-scrollbar {
     width: 4px;
   }

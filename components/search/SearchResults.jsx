@@ -24,11 +24,9 @@ const SearchResults = ({ activeQueryValue, isFetchResultsPending }) => {
     return <></>
   }
   const { isLoading, isError, data, error } = useQuery(
-    ["searchArticles", activeQueryValue],
+    ["searchedArticles", activeQueryValue],
     searchArticles
   )
-
-  console.log(isLoading, isError, data, error)
 
   if (isLoading) {
     return (

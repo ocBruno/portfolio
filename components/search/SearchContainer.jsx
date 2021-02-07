@@ -9,6 +9,9 @@ import SearchResults from "./SearchResults"
 
 const SearchContainerWrapper = styled(ThemedContainer)`
   display: flex;
+  position: fixed;
+  left: 80px;
+  top: 37px;
   flex-direction: column;
   width: 100%;
 `
@@ -51,8 +54,12 @@ const ToggleSearchResultsButton = styled(ArrowIcon)`
 const SearchResultsWrapper = styled(ThemedScrollableContainer)`
   height: ${(props) => (props.isActive ? "12rem" : 0)};
   margin-top: 1rem;
-  position: relative;
-  top: 1rem;
+  position: fixed;
+  padding: 0.4rem 1.5rem;
+  width: 100%;
+  box-shadow: 2px 5px 9px #d0d0d0;
+  top: 80px;
+  left: 0;
   overflow-y: scroll;
   transition: height 300ms ease-in;
 `
