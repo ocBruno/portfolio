@@ -3,6 +3,7 @@ import styled from "styled-components"
 import ArrowIcon from "../icons/ArrowIcon"
 import SearchIcon from "../icons/SearchIcon"
 import ThemedContainer from "../themed/ThemedContainer"
+import ThemedScrollableContainer from "../themed/ThemedScrollableContainer"
 
 import SearchResults from "./SearchResults"
 
@@ -47,33 +48,13 @@ const ToggleSearchResultsButton = styled(ArrowIcon)`
   transition: opacity 300ms ease-in;
 `
 
-const SearchResultsWrapper = styled.div`
+const SearchResultsWrapper = styled(ThemedScrollableContainer)`
   height: ${(props) => (props.isActive ? "12rem" : 0)};
   margin-top: 1rem;
-  background: white;
   position: relative;
   top: 1rem;
   overflow-y: scroll;
   transition: height 300ms ease-in;
-  /* width */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `
 
 const SearchContainer = () => {

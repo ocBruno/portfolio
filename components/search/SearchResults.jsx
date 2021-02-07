@@ -5,15 +5,15 @@ import { useQuery } from "react-query"
 import styled from "styled-components"
 
 import LoadingSpinner from "../LoadingSpinner"
+import ThemedScrollableContainer from "../themed/ThemedScrollableContainer"
 
-const SearchResultsArticles = styled.div``
+const SearchResultsArticles = styled(ThemedScrollableContainer)``
 const EmptyResultsMessageContainer = styled.div``
 const EmptyResultsMessage = styled.h2``
 
 const ArticleTitleLink = styled.a`
   display: flex;
   margin-bottom: 0.6rem;
-  color: rgb(30, 30, 30);
   font-size: 12px;
   font-family: Roboto;
   text-decoration: none;

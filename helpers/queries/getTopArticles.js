@@ -1,4 +1,4 @@
-export const getTopArticle = async () => {
+export const getTopArticles = async () => {
   const NY_TIMES_API_KEY = process.env.NEXT_PUBLIC_NY_TIMES_API_KEY
   const section = "world"
   return await fetch(

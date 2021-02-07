@@ -1,15 +1,16 @@
 import Head from "next/head"
+import { useState } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { QueryClient, QueryClientProvider } from "react-query"
 
-import TopStoryContainer from "../components/widgets/TopStoryContainer"
+import Container from "../components/themed/ThemedContainer"
 import SearchContainer from "../components/search/SearchContainer"
 import MenuContainer from "../components/menu/MenuContainer"
 import MenuIcon from "../components/icons/MenuIcon"
-import { useState } from "react"
 import ConfigurationsContainer from "../components/configurations/ConfigurationsContainer"
+import TopArticlesContainer from "../components/widgets/TopArticlesContainer"
+
 import { useThemeState } from "../contexts/theme-context"
-import Container from "../components/themed/ThemedContainer"
 
 const PageContainer = styled.div`
   display: flex;
@@ -67,7 +68,7 @@ export default function ReactQuery() {
             <SearchContainer />
             <MenuIcon onClick={() => toggleMenu()} />
 
-            <TopStoryContainer />
+            <TopArticlesContainer />
           </PageContentContainer>
         </PageContainer>
       </ThemeProvider>

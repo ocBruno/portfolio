@@ -50,10 +50,10 @@ const CopyrightFooter = styled.footer`
 `
 
 export async function getStaticProps() {
-  // for headline news fetch topstories for world
+  // for headline news fetch TopArticles for world
   const section = "world"
   const res = await fetch(
-    `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${NY_TIMES_API_KEY}`
+    `https://api.nytimes.com/svc/TopArticles/v2/${section}.json?api-key=${NY_TIMES_API_KEY}`
   )
   const articles = await res.json()
 
