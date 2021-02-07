@@ -5,12 +5,16 @@ import Image from "next/image"
 import { getHeadlineArticle } from "../../helpers/queries/getHeadlineArticle"
 import { useQuery } from "react-query"
 import LoadingSpinner from "../LoadingSpinner"
+import ThemedContainer from "../themed/ThemedContainer"
+import ViewMoreIcon from "../icons/ViewMoreIcon"
 
-const ArticleContainer = styled.main`
+const ArticleContainer = styled(ThemedContainer)`
   display: flex;
   align-content: start;
   flex-direction: column;
   width: 27rem;
+  margin-left: 3rem;
+  margin-top: 3rem;
   margin-bottom: auto;
 `
 const ImageWrapper = styled.div`
@@ -31,11 +35,6 @@ const ArticleDescription = styled.main`
 `
 const ArticleLink = styled.a`
   margin-left: auto;
-  &::after {
-    color: rgb(110, 110, 110);
-    content: "⇨ ";
-    margin-left: 9px;
-  }
 `
 const HeadlineArticleContainer = ({ article }) => {
   const { isLoading, isError, data, error } = useQuery(
@@ -59,11 +58,20 @@ const HeadlineArticleContainer = ({ article }) => {
   const articleData = data
   return (
     <ArticleContainer>
-      <ImageWrapper></ImageWrapper>
+      <ImageWrapper>
+        <Image
+          alt={articleData.caption}
+          src={articleData.multimedia[0].url}
+          width={articleData.multimedia[0].width}
+          height={articleData.multimedia[0].height}
+        />
+      </ImageWrapper>
       <ArticleTitle>{articleData.title}</ArticleTitle>
       <ArticleAuthor>{articleData.byline}</ArticleAuthor>
       <ArticleDescription>{articleData.abstract}</ArticleDescription>
-      <ArticleLink href={articleData.url}>View more</ArticleLink>
+      <ArticleLink href={articleData.url}>
+        <ViewMoreIcon />
+      </ArticleLink>
     </ArticleContainer>
   )
 }

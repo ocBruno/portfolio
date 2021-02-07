@@ -24,6 +24,9 @@ const ArrowIcon = ({ onClick, className }) => {
   )
 }
 
-ArrowIcon.propTypes = {}
+ArrowIcon.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+}
 
 export default ArrowIcon

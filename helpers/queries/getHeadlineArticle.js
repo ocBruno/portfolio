@@ -9,7 +9,10 @@ export const getHeadlineArticle = async () => {
       return res.json()
     })
     .then((data) => {
-      return data.results[0]
+      const articlesWithAbstract = data.results.filter(
+        (article) => article.abstract !== ""
+      )
+      return articlesWithAbstract[0]
     })
     .catch((err) => {
       return JSON.stringify(err)

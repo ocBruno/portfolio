@@ -3,12 +3,11 @@ import styled from "styled-components"
 import { useQuery } from "react-query"
 
 import { getTopArticles } from "../../helpers/queries/getTopArticles"
-import ThemedScrollableContainer from "../themed/ThemedScrollableContainer"
+import ThemedContainer from "../themed/ThemedContainer"
 
-const ArticlesContainer = styled(ThemedScrollableContainer)`
+const ArticlesContainer = styled(ThemedContainer)`
   display: flex;
   flex-wrap: wrap;
-  overflow-y: scroll;
   margin-top: 2.4rem;
   width: 100%;
 `

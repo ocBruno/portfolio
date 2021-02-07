@@ -16,7 +16,7 @@ const ConfigurationsContainerWrapper = styled(ThemedContainer)`
   width: ${(props) => (props.isActive ? " 20%" : 0)};
   height: 100vh;
   padding: 1rem;
-  z-index: 1;
+  z-index: 2;
   box-shadow: -6px 0px 24px #333338;
   opacity: ${(props) => (props.isActive ? 1 : 0)};
   transition: all 300ms ease-in;

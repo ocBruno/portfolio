@@ -16,6 +16,7 @@ import { useThemeState } from "../contexts/theme-context"
 import { NY_TIMES_API_KEY } from "../helpers/nytimes"
 import { getHeadlineArticle } from "../helpers/queries/getHeadlineArticle"
 import HeadlineArticleContainer from "../components/widgets/HeadlineArticleContainer"
+import ThemedContainer from "../components/themed/ThemedContainer"
 
 const PageContainer = styled.div`
   display: flex;
@@ -29,6 +30,14 @@ const PageContentContainer = styled(Container)`
   padding-top: 2.4rem;
   width: 100vw;
   min-height: 100vh;
+`
+const NavbarContainer = styled(ThemedContainer)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 5rem;
+  z-index: 1;
 `
 export async function getStaticProps() {
   // for headline news fetch TopArticles for world
@@ -68,6 +77,7 @@ function ReactQuery({ headlineArticle }) {
             <title>React Query</title>
             <link rel="icon" href="/favicon.ico" />
           </Head>
+
           <MenuContainer
             toggleMenu={toggleMenu}
             toggleConfigurations={toggleConfigurations}
@@ -78,8 +88,10 @@ function ReactQuery({ headlineArticle }) {
             isActive={isConfigurationsActive}
           />
           <PageContentContainer>
-            <SearchContainer />
-            <MenuIcon onClick={() => toggleMenu()} />
+            <NavbarContainer>
+              <MenuIcon onClick={() => toggleMenu()} />
+              <SearchContainer />
+            </NavbarContainer>
             <HeadlineArticleContainer article={headlineArticle} />
             <TopArticlesContainer />
           </PageContentContainer>
