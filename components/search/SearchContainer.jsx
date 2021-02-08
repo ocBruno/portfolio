@@ -53,14 +53,14 @@ const ToggleSearchResultsButton = styled(ArrowIcon)`
 const SearchResultsWrapper = styled(ThemedScrollableContainer)`
   height: ${(props) => (props.isActive ? "12rem" : 0)};
   margin-top: 1rem;
-  padding: 0.4rem 1.5rem;
+  padding: ${(props) => (props.isActive ? " 0.4rem 1.5rem" : " 0 1.5rem")};
   z-index: 2;
   width: 100%;
   box-shadow: 2px 5px 9px #d0d0d0;
   top: 80px;
   left: 0;
   overflow-y: scroll;
-  transition: height 300ms ease-in;
+  transition: all 300ms ease-in;
 `
 
 const SearchContainer = () => {

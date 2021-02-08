@@ -14,24 +14,26 @@ import TopArticlesContainer from "../components/widgets/TopArticlesContainer"
 import { useThemeState } from "../contexts/theme-context"
 
 import { NY_TIMES_API_KEY } from "../helpers/nytimes"
-import { getHeadlineArticle } from "../helpers/queries/getHeadlineArticle"
-import HeadlineArticleContainer from "../components/widgets/HeadlineArticleContainer"
+import { getTop3Articles } from "../helpers/queries/getTop3Articles"
+import Top3ArticlesContainer from "../components/widgets/Top3ArticlesContainer"
 import ThemedContainer from "../components/themed/ThemedContainer"
 
-const PageContainer = styled.div`
+const PageContainer = styled(Container)`
   display: flex;
+  width: 100vw;
+  min-height: 100vh;
 `
-const PageContentContainer = styled(Container)`
+const PageContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 2.4rem;
+  padding-left: 5.1rem;
+  padding-right: 5.1rem;
   padding-top: 2.4rem;
-  width: 100vw;
-  min-height: 100vh;
 `
 const NavbarContainer = styled(ThemedContainer)`
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,7 +44,7 @@ const NavbarContainer = styled(ThemedContainer)`
 export async function getStaticProps() {
   // for headline news fetch TopArticles for world
 
-  const headlineArticle = await getHeadlineArticle()
+  const headlineArticle = await getTop3Articles()
   return {
     props: { headlineArticle },
   }
@@ -92,7 +94,7 @@ function ReactQuery({ headlineArticle }) {
               <MenuIcon onClick={() => toggleMenu()} />
               <SearchContainer />
             </NavbarContainer>
-            <HeadlineArticleContainer article={headlineArticle} />
+            <Top3ArticlesContainer article={headlineArticle} />
             <TopArticlesContainer />
           </PageContentContainer>
         </PageContainer>

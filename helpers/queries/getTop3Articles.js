@@ -1,5 +1,5 @@
 import { NY_TIMES_API_KEY } from "../nytimes"
-export const getHeadlineArticle = async () => {
+export const getTop3Articles = async () => {
   const section = "world"
 
   return await fetch(
@@ -12,7 +12,7 @@ export const getHeadlineArticle = async () => {
       const articlesWithAbstract = data.results.filter(
         (article) => article.abstract !== ""
       )
-      return articlesWithAbstract[0]
+      return articlesWithAbstract.slice(0, 3)
     })
     .catch((err) => {
       return JSON.stringify(err)

@@ -8,16 +8,22 @@ import ThemedContainer from "../themed/ThemedContainer"
 const ArticlesContainer = styled(ThemedContainer)`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2.4rem;
-  width: 100%;
+  justify-content: space-between;
+  &::after {
+    content: "";
+    flex: auto;
+  }
 `
 const ArticleContainer = styled.div`
-  margin: 2rem 2.7rem;
   padding: 1rem;
   width: 155px;
   border: 1px solid #ececec;
   border-radius: 3px;
   box-shadow: 2px 2px 2px #ececec;
+  margin-bottom: 2rem;
+  &:not(:nth-child(6n)) {
+    margin-right: 3.3rem;
+  }
 `
 
 const ArticleCoverImage = styled.img`

@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+import ThemedSvg from "../themed/ThemedSvg"
 
-const ViewMoreIconSvg = styled.svg`
+const ViewMoreIconSvg = styled(ThemedSvg)`
   width: 24px;
   margin-left: 0.21rem;
 `
