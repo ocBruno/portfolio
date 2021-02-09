@@ -1,4 +1,4 @@
-import { NY_TIMES_API_KEY } from "../nytimes"
+import { NY_TIMES_API_KEY } from "../env"
 export const getTop3Articles = async () => {
   const section = "world"
 

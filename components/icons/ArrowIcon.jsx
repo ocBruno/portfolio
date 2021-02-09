@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+import ThemedSvg from "../themed/ThemedSvg"
 
-const ArrowIconSvg = styled.svg`
+const ArrowIconSvg = styled(ThemedSvg)`
   width: 12px;
   margin-left: 0.21rem;
   border-radius: 100%;

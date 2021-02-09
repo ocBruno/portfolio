@@ -8,7 +8,7 @@ import {
   TIMESPAN_VALUES,
 } from "../components/MostPopularArticles"
 import * as MostPopularArticlesData from "./data/MostPopularArticlesData.json"
-import { NY_TIMES_API_KEY } from "../helpers/nytimes"
+import { NY_TIMES_API_KEY } from "../helpers/env"
 
 // default is initial filter value from MostPopularArticles component
 const defaultCategory = API_MAPPED_CATEGORIES[CATEGORY_VALUES[0]]

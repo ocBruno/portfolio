@@ -4,7 +4,7 @@ import debounce from "lodash.debounce"
 import { matchSorter } from "match-sorter"
 
 import { apiStates, useApi } from "../hooks/useApi.jsx"
-import { NY_TIMES_API_KEY } from "../helpers/nytimes"
+import { NY_TIMES_API_KEY } from "../helpers/env"
 
 import DropdownSelect from "./Dropdown.jsx"
 import LoadingSpinner from "./LoadingSpinner.jsx"

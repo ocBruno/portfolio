@@ -7,17 +7,18 @@ import BaseSwitch from "../inputs/BaseSwitch"
 import ThemedContainer from "../themed/ThemedContainer"
 
 import { useThemeDispatch } from "../../contexts/theme-context"
+import { lightShadow } from "../../styles/styled"
 
 const ConfigurationsContainerWrapper = styled(ThemedContainer)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
+  position: fixed;
   width: ${(props) => (props.isActive ? " 20%" : 0)};
   height: 100vh;
   padding: 1rem;
   z-index: 2;
-  box-shadow: -6px 0px 24px #333338;
+  box-shadow: ${lightShadow};
   opacity: ${(props) => (props.isActive ? 1 : 0)};
   transition: all 300ms ease-in;
   overflow: hidden;
@@ -25,8 +26,17 @@ const ConfigurationsContainerWrapper = styled(ThemedContainer)`
 const ConfigurationsTopRow = styled.div`
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: 1rem;
+`
+const ConfigurationsHeader = styled.h2``
+
+const SwitchWrapper = styled.div`
+  display: flex;
+`
+const SwitchLabel = styled.span``
+const ChangeThemeSwitch = styled(BaseSwitch)`
+  margin-left: 1rem;
 `
 const ConfigurationsContainer = ({ toggleConfigurations, isActive }) => {
   const dispatch = useThemeDispatch()
@@ -37,10 +47,14 @@ const ConfigurationsContainer = ({ toggleConfigurations, isActive }) => {
 
   return (
     <ConfigurationsContainerWrapper isActive={isActive}>
-      <ConfigurationsTopRow>
-        <CloseIcon onClick={() => toggleConfigurations()} />
+      <ConfigurationsTopRow onClick={() => toggleConfigurations()}>
+        <ConfigurationsHeader>Configurations</ConfigurationsHeader>
+        <CloseIcon />
       </ConfigurationsTopRow>
-      Change theme <BaseSwitch onClick={() => toggleTheme()} />
+      <SwitchWrapper>
+        <SwitchLabel>Change theme</SwitchLabel>
+        <ChangeThemeSwitch onClick={() => toggleTheme()} />
+      </SwitchWrapper>
     </ConfigurationsContainerWrapper>
   )
 }

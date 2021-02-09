@@ -2,37 +2,53 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import Image from "next/image"
-import { getTop3Articles } from "../../helpers/queries/getTop3Articles"
 import { useQuery } from "react-query"
-import LoadingSpinner from "../LoadingSpinner"
+
 import ThemedContainer from "../themed/ThemedContainer"
+import LoadingSpinner from "../LoadingSpinner"
 import ViewMoreIcon from "../icons/ViewMoreIcon"
+
+import { getTop3Articles } from "../../helpers/queries/getTop3Articles"
+import { lightShadow } from "../../styles/styled"
 
 const Top3ArticlesWrapper = styled(ThemedContainer)`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 1rem;
   margin-bottom: 3rem;
 `
 const ArticleContainer = styled.div`
   display: flex;
   align-content: start;
   flex-direction: column;
-  width: 27%;
-  margin-top: 3rem;
+  width: 30%;
+  margin-top: 1rem;
+  padding: 1rem;
+  box-shadow: ${lightShadow};
+  border-radius: 0.3rem;
 `
 const ImageWrapper = styled.div`
   width: 100%;
   height: 13rem;
   overflow: hidden;
   margin-bottom: 1rem;
+  border-radius: 0.3rem;
 `
 const ArticleTitle = styled.header`
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 0.3rem;
 `
-const ArticleAuthor = styled.div`
+const ArticleInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const ArticleAuthor = styled.span`
+  font-size: 11px;
+`
+const ArticleDate = styled.span`
+  margin-bottom: 0.3rem;
   font-size: 11px;
 `
 const ArticleDescription = styled.main`
@@ -40,24 +56,21 @@ const ArticleDescription = styled.main`
   font-size: 11px;
   margin-bottom: 1rem;
 `
-const ArticleLink = styled.a`
+const ArticleViewMoreButton = styled.a`
   margin-left: auto;
+  margin-top: auto;
 `
-const Top3ArticlesContainer = ({ article }) => {
+const Top3ArticlesContainer = ({ articles }) => {
   const { isLoading, isError, data, error } = useQuery(
     "headlineArticle",
     getTop3Articles,
     {
-      initialData: article,
+      initialData: articles,
     }
   )
 
   if (isLoading) {
-    return (
-      <div>
-        <LoadingSpinner />
-      </div>
-    )
+    return <LoadingSpinner />
   }
   if (isError) {
     return <span>Whoops</span>
@@ -78,11 +91,16 @@ const Top3ArticlesContainer = ({ article }) => {
               />
             </ImageWrapper>
             <ArticleTitle>{article.title}</ArticleTitle>
-            <ArticleAuthor>{article.byline}</ArticleAuthor>
+            <ArticleInfoContainer>
+              <ArticleDate>
+                {new Date(article.created_date).toDateString()}
+              </ArticleDate>
+              <ArticleAuthor>{article.byline}</ArticleAuthor>
+            </ArticleInfoContainer>
             <ArticleDescription>{article.abstract}</ArticleDescription>
-            <ArticleLink href={article.url}>
+            <ArticleViewMoreButton href={article.url}>
               <ViewMoreIcon />
-            </ArticleLink>
+            </ArticleViewMoreButton>
           </ArticleContainer>
         )
       })}
@@ -91,7 +109,7 @@ const Top3ArticlesContainer = ({ article }) => {
 }
 
 Top3ArticlesContainer.propTypes = {
-  article: PropTypes.object,
+  articles: PropTypes.array,
 }
 
 export default Top3ArticlesContainer

@@ -10,13 +10,18 @@ import MenuContainer from "../components/menu/MenuContainer"
 import MenuIcon from "../components/icons/MenuIcon"
 import ConfigurationsContainer from "../components/configurations/ConfigurationsContainer"
 import TopArticlesContainer from "../components/widgets/TopArticlesContainer"
-
-import { useThemeState } from "../contexts/theme-context"
-
-import { NY_TIMES_API_KEY } from "../helpers/nytimes"
-import { getTop3Articles } from "../helpers/queries/getTop3Articles"
 import Top3ArticlesContainer from "../components/widgets/Top3ArticlesContainer"
 import ThemedContainer from "../components/themed/ThemedContainer"
+
+import { useThemeState } from "../contexts/theme-context"
+import { getTop3Articles } from "../helpers/queries/getTop3Articles"
+
+import { lightShadow } from "../styles/styled"
+import NyTimesIcon from "../components/icons/NyTimesIcon"
+import LatestPublishedArticleContainer from "../components/widgets/LatestPublishedArticleContainer"
+import LocalWeatherContainer from "../components/widgets/LocalWeatherContainer"
+import { getLocalWeather } from "../helpers/queries/getLocalWeather"
+import { getArticlesStream } from "../helpers/queries/getArticlesStream"
 
 const PageContainer = styled(Container)`
   display: flex;
@@ -40,13 +45,28 @@ const NavbarContainer = styled(ThemedContainer)`
   width: 100%;
   padding: 1rem 5rem;
   z-index: 1;
+  box-shadow: ${lightShadow};
+`
+const PageTopRowContainer = styled.div`
+  display: flex;
+  margin-top: 3rem;
+  width: 100%;
+  justify-content: space-between;
+  svg {
+    width: 30%;
+  }
+`
+const PageTopRowHeader = styled.h2`
+  width: 30%;
+  border-bottom: 1px solid black;
 `
 export async function getStaticProps() {
   // for headline news fetch TopArticles for world
 
-  const headlineArticle = await getTop3Articles()
+  const top3Articles = await getTop3Articles()
+  const articlesStream = await getArticlesStream()
   return {
-    props: { headlineArticle },
+    props: { top3Articles, articlesStream },
   }
 }
 
@@ -54,7 +74,7 @@ export async function getStaticProps() {
 // for queries to be accessible within children components
 const queryClient = new QueryClient()
 
-function ReactQuery({ headlineArticle }) {
+function ReactQuery({ top3Articles, localWeather, articlesStream }) {
   const { theme } = useThemeState()
   const [isMenuActive, setIsMenuActive] = useState(false)
 
@@ -94,7 +114,14 @@ function ReactQuery({ headlineArticle }) {
               <MenuIcon onClick={() => toggleMenu()} />
               <SearchContainer />
             </NavbarContainer>
-            <Top3ArticlesContainer article={headlineArticle} />
+            <PageTopRowContainer>
+              <LocalWeatherContainer />
+              <NyTimesIcon />
+              <LatestPublishedArticleContainer
+                articlesStream={articlesStream}
+              />
+            </PageTopRowContainer>
+            <Top3ArticlesContainer articles={top3Articles} />
             <TopArticlesContainer />
           </PageContentContainer>
         </PageContainer>
@@ -103,6 +130,8 @@ function ReactQuery({ headlineArticle }) {
   )
 }
 ReactQuery.propTypes = {
-  headlineArticle: PropTypes.object,
+  top3Articles: PropTypes.array,
+  localWeather: PropTypes.object,
+  articlesStream: PropTypes.object,
 }
 export default ReactQuery

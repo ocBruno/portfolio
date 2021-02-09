@@ -2,8 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { useQuery } from "react-query"
 
-import { getTopArticles } from "../../helpers/queries/getTopArticles"
 import ThemedContainer from "../themed/ThemedContainer"
+
+import { getTopArticles } from "../../helpers/queries/getTopArticles"
+import { lightShadow } from "../../styles/styled"
 
 const ArticlesContainer = styled(ThemedContainer)`
   display: flex;
@@ -15,25 +17,32 @@ const ArticlesContainer = styled(ThemedContainer)`
   }
 `
 const ArticleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
   padding: 1rem;
-  width: 155px;
+  width: 30%;
   border: 1px solid #ececec;
   border-radius: 3px;
-  box-shadow: 2px 2px 2px #ececec;
+  box-shadow: ${lightShadow};
   margin-bottom: 2rem;
-  &:not(:nth-child(6n)) {
-    margin-right: 3.3rem;
+  &:not(:nth-child(3n)) {
+    margin-right: 3.6rem;
   }
 `
 
 const ArticleCoverImage = styled.img`
   width: 80px;
+  border-radius: 0.3rem;
   margin-bottom: 9px;
 `
+const ArticleInfo = styled.div`
+  width: 68%;
+`
+
 const ArticleTitleLink = styled.a`
   display: flex;
   line-height: 1.3;
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 6px;
   font-family: Roboto;
   text-decoration: none;
@@ -69,10 +78,13 @@ const TopArticlesContainer = () => {
         return (
           <ArticleContainer key={`article${i}`}>
             <ArticleCoverImage src={thumbnail} />
-            <ArticleTitleLink href={article.url}>
-              {article.title}
-            </ArticleTitleLink>
-            <ArticleByline href={article.url}>{article.byline}</ArticleByline>
+            <ArticleInfo>
+              <ArticleTitleLink href={article.url}>
+                {article.title}
+              </ArticleTitleLink>
+
+              <ArticleByline href={article.url}>{article.byline}</ArticleByline>
+            </ArticleInfo>
           </ArticleContainer>
         )
       })}

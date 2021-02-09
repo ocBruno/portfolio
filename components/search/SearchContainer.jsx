@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import { lightShadow } from "../../styles/styled"
+
 import ArrowIcon from "../icons/ArrowIcon"
 import SearchIcon from "../icons/SearchIcon"
 import ThemedContainer from "../themed/ThemedContainer"
 import ThemedScrollableContainer from "../themed/ThemedScrollableContainer"
-
-import SearchResults from "./SearchResults"
+import SearchResultsContainer from "./SearchResultsContainer"
 
 const SearchContainerWrapper = styled(ThemedContainer)`
   display: flex;
@@ -51,16 +52,15 @@ const ToggleSearchResultsButton = styled(ArrowIcon)`
 `
 
 const SearchResultsWrapper = styled(ThemedScrollableContainer)`
-  height: ${(props) => (props.isActive ? "12rem" : 0)};
+  height: ${(props) => (props.isActive ? "15rem" : 0)};
   margin-top: 1rem;
   padding: ${(props) => (props.isActive ? " 0.4rem 1.5rem" : " 0 1.5rem")};
   z-index: 2;
   width: 100%;
-  box-shadow: 2px 5px 9px #d0d0d0;
   top: 80px;
   left: 0;
   overflow-y: scroll;
-  transition: all 300ms ease-in;
+  transition: all 600ms ease-in;
 `
 
 const SearchContainer = () => {
@@ -127,7 +127,7 @@ const SearchContainer = () => {
       </SearchInputRow>
       {isFetchResultsPending ? (
         <SearchResultsWrapper isActive={isSearchResultsActive}>
-          <SearchResults activeQueryValue={activeQueryValue} />
+          <SearchResultsContainer activeQueryValue={activeQueryValue} />
         </SearchResultsWrapper>
       ) : (
         <></>

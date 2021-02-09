@@ -19,7 +19,10 @@ const ArticleTitleLink = styled.a`
   text-decoration: none;
 `
 
-const SearchResults = ({ activeQueryValue, isFetchResultsPending }) => {
+const SearchResultsContainer = ({
+  activeQueryValue,
+  isFetchResultsPending,
+}) => {
   if (isFetchResultsPending === false) {
     return <></>
   }
@@ -29,11 +32,7 @@ const SearchResults = ({ activeQueryValue, isFetchResultsPending }) => {
   )
 
   if (isLoading) {
-    return (
-      <div>
-        <LoadingSpinner />
-      </div>
-    )
+    return <LoadingSpinner />
   }
   if (isError) {
     return <span>Whoops</span>
@@ -56,9 +55,9 @@ const SearchResults = ({ activeQueryValue, isFetchResultsPending }) => {
   )
 }
 
-SearchResults.propTypes = {
+SearchResultsContainer.propTypes = {
   activeQueryValue: PropTypes.string,
   isFetchResultsPending: PropTypes.bool,
 }
 
-export default SearchResults
+export default SearchResultsContainer

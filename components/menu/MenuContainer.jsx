@@ -6,17 +6,18 @@ import { useRouter } from "next/router"
 import CloseIcon from "../icons/CloseIcon"
 import ConfigurationsIcon from "../icons/ConfigurationsIcon"
 import ThemedContainer from "../themed/ThemedContainer"
+import { lightShadow } from "../../styles/styled"
 
 const MenuContainerWrapper = styled(ThemedContainer)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
+  position: fixed;
   width: ${(props) => (props.isActive ? " 20%" : 0)};
   height: 100vh;
   padding: 1rem;
   z-index: 2;
-  box-shadow: -6px 0px 24px #333338;
+  box-shadow: ${lightShadow};
   opacity: ${(props) => (props.isActive ? 1 : 0)};
   transition: all 300ms ease-in;
   overflow: hidden;
@@ -54,9 +55,6 @@ const MenuContainer = ({ isActive, toggleMenu, toggleConfigurations }) => {
       <NavOption onClick={(e) => handleNavOptionClick(e, "/")}>Home</NavOption>
       <NavOption onClick={(e) => handleNavOptionClick(e, "/news")}>
         Most Popular
-      </NavOption>
-      <NavOption onClick={(e) => handleNavOptionClick(e, "/news/headline")}>
-        Top Story
       </NavOption>
     </MenuContainerWrapper>
   )
