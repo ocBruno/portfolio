@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { searchArticles } from "../../helpers/queries/searchArticles"
+import { searchArticles } from "../../helpers/queries/news/searchArticles"
 import { useQuery } from "react-query"
 import styled from "styled-components"
 

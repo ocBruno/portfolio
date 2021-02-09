@@ -7,20 +7,20 @@ import { QueryClient, QueryClientProvider } from "react-query"
 import ThemedContainer from "../components/themed/ThemedContainer"
 import MenuContainer from "../components/menu/MenuContainer"
 import ConfigurationsContainer from "../components/configurations/ConfigurationsContainer"
-import TopArticlesContainer from "../components/widgets/TopArticlesContainer"
-import Top3ArticlesContainer from "../components/widgets/Top3ArticlesContainer"
+import TopArticlesContainer from "../components/widgets/news/TopArticlesContainer"
+import Top3ArticlesContainer from "../components/widgets/news/Top3ArticlesContainer"
 
 import { useThemeState } from "../contexts/theme-context"
-import { getTop3Articles } from "../helpers/queries/getTop3Articles"
+import { getTop3Articles } from "../helpers/queries/news/getTop3Articles"
 
 import NyTimesIcon from "../components/icons/NyTimesIcon"
-import LatestPublishedArticleContainer from "../components/widgets/LatestPublishedArticleContainer"
-import LocalWeatherContainer from "../components/widgets/LocalWeatherContainer"
-import { getArticlesStream } from "../helpers/queries/getArticlesStream"
+import LatestPublishedArticleContainer from "../components/widgets/news/LatestPublishedArticleContainer"
+import LocalWeatherContainer from "../components/widgets/weather/LocalWeatherContainer"
+import { getArticlesStream } from "../helpers/queries/news/getArticlesStream"
 import NavbarContainer from "../components/navbar/NavbarContainer"
 import { sections } from "../helpers/constants"
-import SectionsContainer from "../components/widgets/SectionsContainer"
-import { getTopArticles } from "../helpers/queries/getTopArticles"
+import SectionsContainer from "../components/widgets/news/SectionsContainer"
+import { getTopArticles } from "../helpers/queries/news/getTopArticles"
 
 const PageContainer = styled(ThemedContainer)`
   display: flex;
@@ -61,7 +61,7 @@ export async function getStaticProps() {
 // for queries to be accessible within children components
 const queryClient = new QueryClient()
 
-function ReactQuery({ top3Articles, topArticles, articlesStream }) {
+function NyTimes({ top3Articles, topArticles, articlesStream }) {
   const { theme } = useThemeState()
   const [isMenuActive, setIsMenuActive] = useState(false)
   const [activeSection, setActiveSection] = useState(sections.world)
@@ -83,7 +83,7 @@ function ReactQuery({ top3Articles, topArticles, articlesStream }) {
       <ThemeProvider theme={{ shade: theme }}>
         <PageContainer>
           <Head>
-            <title>React Query</title>
+            <title>Ny Times</title>
             <link rel="icon" href="/favicon.ico" />
           </Head>
 
@@ -124,9 +124,9 @@ function ReactQuery({ top3Articles, topArticles, articlesStream }) {
     </QueryClientProvider>
   )
 }
-ReactQuery.propTypes = {
+NyTimes.propTypes = {
   top3Articles: PropTypes.array,
   topArticles: PropTypes.object,
   articlesStream: PropTypes.object,
 }
-export default ReactQuery
+export default NyTimes

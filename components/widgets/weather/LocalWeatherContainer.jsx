@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import LoadingSpinner from "../LoadingSpinner"
+import LoadingSpinner from "../../LoadingSpinner"
 import { useQuery } from "react-query"
-import { getLocalWeather } from "../../helpers/queries/getLocalWeather"
+import { getLocalWeather } from "../../../helpers/queries/weather/getLocalWeather"
 
 const WeatherContainer = styled.div`
   width: 180px;
   padding: 1rem;
-  border: 1px solid rgb(180, 180, 180);
   border-radius: 6px;
 `
 
@@ -56,7 +55,6 @@ const LocalWeatherContainer = () => {
   if (isError) {
     return <span>Whoops</span>
   }
-  console.log(data)
   const localeName = data.name
   const weatherDescription = data.weather[0].main
   const temperatureCelsius = Math.round(data.main.temp - 273.15)

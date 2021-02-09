@@ -4,12 +4,12 @@ import styled from "styled-components"
 import Image from "next/image"
 import { useQuery } from "react-query"
 
-import ThemedContainer from "../themed/ThemedContainer"
-import LoadingSpinner from "../LoadingSpinner"
-import ViewMoreIcon from "../icons/ViewMoreIcon"
+import ThemedContainer from "../../themed/ThemedContainer"
+import LoadingSpinner from "../../LoadingSpinner"
+import ViewMoreIcon from "../../icons/ViewMoreIcon"
 
-import { getTop3Articles } from "../../helpers/queries/getTop3Articles"
-import { lightShadow } from "../../styles/styled"
+import { getTop3Articles } from "../../../helpers/queries/news/getTop3Articles"
+import { lightShadow } from "../../../styles/styled"
 
 const Top3ArticlesWrapper = styled(ThemedContainer)`
   display: flex;
@@ -76,7 +76,6 @@ const Top3ArticlesContainer = ({ articles, activeSection }) => {
     return <span>Whoops</span>
   }
   const top3Articles = data
-  console.log(top3Articles)
   return (
     <Top3ArticlesWrapper>
       {top3Articles.map((article, articleIndex) => {

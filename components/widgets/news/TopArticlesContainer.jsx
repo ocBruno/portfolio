@@ -3,11 +3,11 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { useQuery } from "react-query"
 
-import ThemedContainer from "../themed/ThemedContainer"
+import ThemedContainer from "../../themed/ThemedContainer"
 
-import { getTopArticles } from "../../helpers/queries/getTopArticles"
-import { lightShadow } from "../../styles/styled"
-import LoadingSpinner from "../LoadingSpinner"
+import { getTopArticles } from "../../../helpers/queries/news/getTopArticles"
+import { lightShadow } from "../../../styles/styled"
+import LoadingSpinner from "../../LoadingSpinner"
 
 const ArticlesContainer = styled(ThemedContainer)`
   display: flex;

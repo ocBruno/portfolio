@@ -1,5 +1,5 @@
-import { sections } from "../constants"
-import { NY_TIMES_API_KEY } from "../env"
+import { sections } from "../../constants"
+import { NY_TIMES_API_KEY } from "../../env"
 export const getTop3Articles = async (key) => {
   var section
   if (key === undefined) {
@@ -7,7 +7,6 @@ export const getTop3Articles = async (key) => {
   } else {
     section = key.queryKey[1]
   }
-  console.log(section)
   return await fetch(
     `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${NY_TIMES_API_KEY}`
   )

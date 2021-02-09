@@ -2,11 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useQuery } from "react-query"
 
-import LoadingSpinner from "../LoadingSpinner"
-import { getArticlesStream } from "../../helpers/queries/getArticlesStream"
+import LoadingSpinner from "../../LoadingSpinner"
+import { getArticlesStream } from "../../../helpers/queries/news/getArticlesStream"
 import styled from "styled-components"
 
 const LatestPublishedArticleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 11rem;
 `
 const ArticleTitle = styled.div`

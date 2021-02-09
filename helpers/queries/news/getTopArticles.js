@@ -1,5 +1,5 @@
-import { sections } from "../constants"
-import { NY_TIMES_API_KEY } from "../env"
+import { sections } from "../../constants"
+import { NY_TIMES_API_KEY } from "../../env"
 export const getTopArticles = async (key) => {
   var section
   if (key === undefined) {

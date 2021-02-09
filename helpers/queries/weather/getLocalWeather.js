@@ -1,4 +1,4 @@
-import { X_RAPIDAPI_KEY } from "../env"
+import { X_RAPIDAPI_KEY } from "../../env"
 
 export const getLocalWeather = async (key) => {
   const lat = key.queryKey[1].lat

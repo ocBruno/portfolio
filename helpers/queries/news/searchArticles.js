@@ -1,4 +1,4 @@
-import { NY_TIMES_API_KEY } from "../env"
+import { NY_TIMES_API_KEY } from "../../env"
 export const searchArticles = async (key) => {
   const activeQueryValue = key.queryKey[1]
   return await fetch(

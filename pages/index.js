@@ -142,17 +142,11 @@ export default function Home() {
           custom hooks
         </ProjectLink>
         <ProjectLink
-          alt="State management using useReducer hook"
-          href="/state-management"
+          alt="Ny times integration implemented with react query rendered on server side"
+          href="/ny-times"
         >
-          Simple state management page using useReducer hook and context
-        </ProjectLink>{" "}
-        <ProjectLink
-          alt="React query rendered on server side"
-          href="/react-query"
-        >
-          Implement react query with server side rendering for managing server
-          side state efficiently
+          News page implemented with ny times api, open weather api, react query
+          and server side rendering for managing server side state efficiently.
         </ProjectLink>
       </ProjectsDescription>
     </PageContainer>

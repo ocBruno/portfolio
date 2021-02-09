@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import ThemedContainer from "../themed/ThemedContainer"
+import ThemedContainer from "../../themed/ThemedContainer"
 
 const SectionsContainerWrapper = styled(ThemedContainer)`
   display: flex;
