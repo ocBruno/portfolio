@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import { useQuery } from "react-query"
 
@@ -6,6 +7,7 @@ import ThemedContainer from "../themed/ThemedContainer"
 
 import { getTopArticles } from "../../helpers/queries/getTopArticles"
 import { lightShadow } from "../../styles/styled"
+import LoadingSpinner from "../LoadingSpinner"
 
 const ArticlesContainer = styled(ThemedContainer)`
   display: flex;
@@ -56,14 +58,15 @@ const ArticleByline = styled.a`
   text-decoration: none;
 `
 
-const TopArticlesContainer = () => {
+const TopArticlesContainer = ({ topArticles, activeSection }) => {
   const { isLoading, isError, data, error } = useQuery(
-    "topArticles",
-    getTopArticles
+    ["topArticles", activeSection],
+    getTopArticles,
+    { initialData: topArticles }
   )
 
   if (isLoading) {
-    return <span>Loading</span>
+    return <LoadingSpinner />
   }
   if (isError) {
     return <span>Whoops</span>
@@ -92,6 +95,9 @@ const TopArticlesContainer = () => {
   )
 }
 
-TopArticlesContainer.propTypes = {}
+TopArticlesContainer.propTypes = {
+  topArticles: PropTypes.object,
+  activeSection: PropTypes.string,
+}
 
 export default TopArticlesContainer

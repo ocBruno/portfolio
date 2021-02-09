@@ -4,26 +4,25 @@ import { useState } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { QueryClient, QueryClientProvider } from "react-query"
 
-import Container from "../components/themed/ThemedContainer"
-import SearchContainer from "../components/search/SearchContainer"
+import ThemedContainer from "../components/themed/ThemedContainer"
 import MenuContainer from "../components/menu/MenuContainer"
-import MenuIcon from "../components/icons/MenuIcon"
 import ConfigurationsContainer from "../components/configurations/ConfigurationsContainer"
 import TopArticlesContainer from "../components/widgets/TopArticlesContainer"
 import Top3ArticlesContainer from "../components/widgets/Top3ArticlesContainer"
-import ThemedContainer from "../components/themed/ThemedContainer"
 
 import { useThemeState } from "../contexts/theme-context"
 import { getTop3Articles } from "../helpers/queries/getTop3Articles"
 
-import { lightShadow } from "../styles/styled"
 import NyTimesIcon from "../components/icons/NyTimesIcon"
 import LatestPublishedArticleContainer from "../components/widgets/LatestPublishedArticleContainer"
 import LocalWeatherContainer from "../components/widgets/LocalWeatherContainer"
-import { getLocalWeather } from "../helpers/queries/getLocalWeather"
 import { getArticlesStream } from "../helpers/queries/getArticlesStream"
+import NavbarContainer from "../components/navbar/NavbarContainer"
+import { sections } from "../helpers/constants"
+import SectionsContainer from "../components/widgets/SectionsContainer"
+import { getTopArticles } from "../helpers/queries/getTopArticles"
 
-const PageContainer = styled(Container)`
+const PageContainer = styled(ThemedContainer)`
   display: flex;
   width: 100vw;
   min-height: 100vh;
@@ -35,38 +34,26 @@ const PageContentContainer = styled.div`
   align-items: flex-start;
   padding-left: 5.1rem;
   padding-right: 5.1rem;
-  padding-top: 2.4rem;
+  padding-top: 5.1rem;
 `
-const NavbarContainer = styled(ThemedContainer)`
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem 5rem;
-  z-index: 1;
-  box-shadow: ${lightShadow};
-`
+
 const PageTopRowContainer = styled.div`
   display: flex;
-  margin-top: 3rem;
   width: 100%;
   justify-content: space-between;
   svg {
     width: 30%;
   }
 `
-const PageTopRowHeader = styled.h2`
-  width: 30%;
-  border-bottom: 1px solid black;
-`
-export async function getStaticProps() {
-  // for headline news fetch TopArticles for world
 
+export async function getStaticProps() {
   const top3Articles = await getTop3Articles()
+  const topArticles = await getTopArticles()
+
   const articlesStream = await getArticlesStream()
+
   return {
-    props: { top3Articles, articlesStream },
+    props: { top3Articles, topArticles, articlesStream },
   }
 }
 
@@ -74,10 +61,10 @@ export async function getStaticProps() {
 // for queries to be accessible within children components
 const queryClient = new QueryClient()
 
-function ReactQuery({ top3Articles, localWeather, articlesStream }) {
+function ReactQuery({ top3Articles, topArticles, articlesStream }) {
   const { theme } = useThemeState()
   const [isMenuActive, setIsMenuActive] = useState(false)
-
+  const [activeSection, setActiveSection] = useState(sections.world)
   const [isConfigurationsActive, setIsConfigurationsActive] = useState(false)
 
   const toggleMenu = () => {
@@ -109,11 +96,13 @@ function ReactQuery({ top3Articles, localWeather, articlesStream }) {
             toggleConfigurations={toggleConfigurations}
             isActive={isConfigurationsActive}
           />
+          <NavbarContainer toggleMenu={toggleMenu} />
           <PageContentContainer>
-            <NavbarContainer>
-              <MenuIcon onClick={() => toggleMenu()} />
-              <SearchContainer />
-            </NavbarContainer>
+            <SectionsContainer
+              setActiveSection={setActiveSection}
+              sections={sections}
+              activeSection={activeSection}
+            />
             <PageTopRowContainer>
               <LocalWeatherContainer />
               <NyTimesIcon />
@@ -121,8 +110,14 @@ function ReactQuery({ top3Articles, localWeather, articlesStream }) {
                 articlesStream={articlesStream}
               />
             </PageTopRowContainer>
-            <Top3ArticlesContainer articles={top3Articles} />
-            <TopArticlesContainer />
+            <Top3ArticlesContainer
+              activeSection={activeSection}
+              articles={top3Articles}
+            />
+            <TopArticlesContainer
+              topArticles={topArticles}
+              activeSection={activeSection}
+            />
           </PageContentContainer>
         </PageContainer>
       </ThemeProvider>
@@ -131,7 +126,7 @@ function ReactQuery({ top3Articles, localWeather, articlesStream }) {
 }
 ReactQuery.propTypes = {
   top3Articles: PropTypes.array,
-  localWeather: PropTypes.object,
+  topArticles: PropTypes.object,
   articlesStream: PropTypes.object,
 }
 export default ReactQuery

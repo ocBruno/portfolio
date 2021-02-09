@@ -11,6 +11,7 @@ const LatestPublishedArticleContainer = styled.div`
 `
 const ArticleTitle = styled.div`
   font-size: 11px;
+  margin-bottom: 3px;
 `
 const ArticleDate = styled.div`
   font-size: 10px;

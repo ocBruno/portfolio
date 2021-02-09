@@ -60,9 +60,9 @@ const ArticleViewMoreButton = styled.a`
   margin-left: auto;
   margin-top: auto;
 `
-const Top3ArticlesContainer = ({ articles }) => {
+const Top3ArticlesContainer = ({ articles, activeSection }) => {
   const { isLoading, isError, data, error } = useQuery(
-    "headlineArticle",
+    ["headlineArticle", activeSection],
     getTop3Articles,
     {
       initialData: articles,
@@ -76,7 +76,7 @@ const Top3ArticlesContainer = ({ articles }) => {
     return <span>Whoops</span>
   }
   const top3Articles = data
-
+  console.log(top3Articles)
   return (
     <Top3ArticlesWrapper>
       {top3Articles.map((article, articleIndex) => {
@@ -110,6 +110,7 @@ const Top3ArticlesContainer = ({ articles }) => {
 
 Top3ArticlesContainer.propTypes = {
   articles: PropTypes.array,
+  activeSection: PropTypes.string,
 }
 
 export default Top3ArticlesContainer
