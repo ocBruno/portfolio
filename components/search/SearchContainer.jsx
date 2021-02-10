@@ -10,10 +10,8 @@ import SearchResultsContainer from "./SearchResultsContainer"
 
 const SearchContainerWrapper = styled(ThemedContainer)`
   display: flex;
-  left: 80px;
-  top: 37px;
+  max-width: 90%;
   flex-direction: column;
-  width: 100%;
 `
 const SearchInputRow = styled.div`
   display: flex;
@@ -29,7 +27,7 @@ const SearchInputContainer = styled.div`
   transition: all 300ms ease-in;
 `
 const SearchIconWrapper = styled(SearchIcon)`
-  margin-right: 0.3rem;
+  margin-right: 9px;
 `
 const SearchInput = styled.input`
   border: none;
@@ -43,24 +41,23 @@ const SearchInput = styled.input`
 
 const ToggleSearchResultsButton = styled(ArrowIcon)`
   display: inline-flex;
-  margin-left: 1rem;
+  margin-left: 12px;
   cursor: pointer;
   transform: ${(props) =>
-    props.isClosing === true ? "rotate(0deg)" : "rotate(180deg)"};
+    props.isClosing === true ? "rotate(180deg)" : "rotate(0deg)"};
   opacity: ${(props) => (props.isActive ? 1 : 0)};
   transition: opacity 300ms ease-in;
 `
 
 const SearchResultsWrapper = styled(ThemedScrollableContainer)`
   height: ${(props) => (props.isActive ? "15rem" : 0)};
-  margin-top: 1rem;
-  padding: ${(props) => (props.isActive ? " 0.4rem 1.5rem" : " 0 1.5rem")};
+  margin-top: 12px;
   z-index: 2;
   width: 100%;
   top: 80px;
   left: 0;
   overflow-y: scroll;
-  transition: all 600ms ease-in;
+  transition: height 600ms ease-in;
 `
 
 const SearchContainer = () => {

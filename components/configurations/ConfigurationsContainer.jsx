@@ -14,9 +14,10 @@ const ConfigurationsContainerWrapper = styled(ThemedContainer)`
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  width: ${(props) => (props.isActive ? " 20%" : 0)};
+  width: 200px;
+  left: ${(props) => (props.isActive ? "0" : `-200px`)};
   height: 100vh;
-  padding: 1rem;
+  padding: 12px;
   z-index: 2;
   box-shadow: ${lightShadow};
   opacity: ${(props) => (props.isActive ? 1 : 0)};
@@ -27,7 +28,7 @@ const ConfigurationsTopRow = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
 `
 const ConfigurationsHeader = styled.h2``
 
@@ -36,7 +37,7 @@ const SwitchWrapper = styled.div`
 `
 const SwitchLabel = styled.span``
 const ChangeThemeSwitch = styled(BaseSwitch)`
-  margin-left: 1rem;
+  margin-left: 12px;
 `
 const ConfigurationsContainer = ({ toggleConfigurations, isActive }) => {
   const dispatch = useThemeDispatch()

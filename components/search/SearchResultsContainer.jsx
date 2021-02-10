@@ -12,11 +12,16 @@ const EmptyResultsMessageContainer = styled.div``
 const EmptyResultsMessage = styled.h2``
 
 const ArticleTitleLink = styled.a`
-  display: flex;
-  margin-bottom: 0.6rem;
+  display: block;
+  margin-bottom: 12px;
   font-size: 12px;
   font-family: Roboto;
   text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin: 12px 29px;
 `
 
 const SearchResultsContainer = ({

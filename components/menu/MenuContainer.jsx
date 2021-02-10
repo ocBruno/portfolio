@@ -13,9 +13,10 @@ const MenuContainerWrapper = styled(ThemedContainer)`
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  width: ${(props) => (props.isActive ? " 20%" : 0)};
+  left: ${(props) => (props.isActive ? "0" : `-200px`)};
+  width: 200px;
   height: 100vh;
-  padding: 1rem;
+  padding: 12px;
   z-index: 2;
   box-shadow: ${lightShadow};
   opacity: ${(props) => (props.isActive ? 1 : 0)};
@@ -27,14 +28,14 @@ const MenuTopRow = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
 `
 const ConfigurationsIconWrapper = styled(ConfigurationsIcon)`
   margin-left: auto;
 `
 const MenuHeader = styled.h2``
 const NavOption = styled.h3`
-  margin-bottom: 0.3rem;
+  margin-bottom: 9px;
   cursor: pointer;
 `
 

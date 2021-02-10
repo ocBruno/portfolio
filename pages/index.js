@@ -1,7 +1,7 @@
 import Head from "next/head"
 import styled from "styled-components"
 const PageContainer = styled.div`
-  padding: 1.2rem;
+  padding: 15px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -16,7 +16,7 @@ const PageContainer = styled.div`
   margin-left: 6px;
   min-height: 100vh;
   @media (min-width: 800px) {
-    padding: 2rem;
+    padding: 24px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,8 +41,8 @@ const UserHeaderContainer = styled.header`
     display: flex;
     width: 100%;
     flex-flow: wrap;
-    margin-bottom: 1.2rem;
-    margin-top: 1.2rem;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 `
 const UserNameHeader = styled.h2`
@@ -65,7 +65,7 @@ const UserImage = styled.img`
   width: 14vw;
   display: inline-flex;
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
   margin-right: 2rem;
   border-radius: 100%;
   @media (min-width: 800px) {
@@ -74,7 +74,7 @@ const UserImage = styled.img`
   }
 `
 const UserDescriptionHeader = styled.h2`
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
   width: 100%;
 `
 const UserDescription = styled.div`
@@ -82,7 +82,7 @@ const UserDescription = styled.div`
   align-items: center;
   margin-right: auto;
   font-size: 12px;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
   @media (min-width: 800px) {
     width: auto;
     margin-right: 47rem;
@@ -103,7 +103,7 @@ const ProjectLink = styled.a`
   font-size: 13px;
   margin-bottom: 0.9rem;
   border-bottom: 1px solid rgb(210, 210, 210);
-  padding-bottom: 0.3rem;
+  padding-bottom: 9px;
   &::before {
     color: rgb(210, 210, 210);
     content: "⇨ ";

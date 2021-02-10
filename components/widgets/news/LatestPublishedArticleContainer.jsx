@@ -5,19 +5,30 @@ import { useQuery } from "react-query"
 import LoadingSpinner from "../../LoadingSpinner"
 import { getArticlesStream } from "../../../helpers/queries/news/getArticlesStream"
 import styled from "styled-components"
+import { devices } from "../../../styles/styled"
 
 const LatestPublishedArticleContainer = styled.div`
-  display: flex;
+  width: 200px;
+  display: none;
   flex-direction: column;
   justify-content: center;
-  width: 11rem;
+  @media ${devices.laptop} {
+    display: flex;
+    width: 100px;
+  }
 `
 const ArticleTitle = styled.div`
-  font-size: 11px;
   margin-bottom: 3px;
+  font-size: 19px;
+  @media ${devices.laptop} {
+    font-size: 11px;
+  }
 `
 const ArticleDate = styled.div`
-  font-size: 10px;
+  font-size: 18px;
+  @media ${devices.laptop} {
+    font-size: 11px;
+  }
 `
 
 const ArticleStreamContainer = ({ articlesStream }) => {

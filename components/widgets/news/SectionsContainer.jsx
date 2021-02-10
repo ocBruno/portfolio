@@ -2,17 +2,24 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import ThemedContainer from "../../themed/ThemedContainer"
+import { devices } from "../../../styles/styled"
 
 const SectionsContainerWrapper = styled(ThemedContainer)`
-  display: flex;
+  display: none;
   align-self: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
+  @media ${devices.laptop} {
+    display: flex;
+  }
 `
+
 const SectionContainer = styled.div`
-  font-size: 11px;
-  margin-right: 1rem;
+  margin-right: 12px;
   cursor: pointer;
   font-weight: ${(props) => (props.isActive ? `600` : `500`)};
+  @media ${devices.laptop} {
+    font-size: 11px;
+  }
 `
 
 const SectionsContainer = ({ sections, setActiveSection, activeSection }) => {

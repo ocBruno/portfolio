@@ -4,8 +4,8 @@ import PropTypes from "prop-types"
 import ThemedSvg from "../themed/ThemedSvg"
 
 const ConfigurationsIconSvg = styled(ThemedSvg)`
-  margin-left: 0.21rem;
-  margin-right: 0.21rem;
+  margin-left: 12px;
+  margin-right: 12px;
   border-radius: 100%;
   cursor: pointer;
 `

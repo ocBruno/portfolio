@@ -21,10 +21,10 @@ import NavbarContainer from "../components/navbar/NavbarContainer"
 import { sections } from "../helpers/constants"
 import SectionsContainer from "../components/widgets/news/SectionsContainer"
 import { getTopArticles } from "../helpers/queries/news/getTopArticles"
+import { devices } from "../styles/styled"
 
 const PageContainer = styled(ThemedContainer)`
   display: flex;
-  width: 100vw;
   min-height: 100vh;
 `
 const PageContentContainer = styled.div`
@@ -32,17 +32,30 @@ const PageContentContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 5.1rem;
-  padding-right: 5.1rem;
-  padding-top: 5.1rem;
+  width: 100vw;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 63px;
+
+  @media ${devices.laptop} {
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 90px;
+  }
 `
 
 const PageTopRowContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   svg {
-    width: 30%;
+    width: 90%;
+  }
+  @media ${devices.laptop} {
+    svg {
+      width: 30%;
+    }
+    justify-content: space-between;
   }
 `
 
@@ -85,6 +98,10 @@ function NyTimes({ top3Articles, topArticles, articlesStream }) {
           <Head>
             <title>Ny Times</title>
             <link rel="icon" href="/favicon.ico" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
           </Head>
 
           <MenuContainer

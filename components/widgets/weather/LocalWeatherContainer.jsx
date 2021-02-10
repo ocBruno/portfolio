@@ -4,11 +4,17 @@ import styled from "styled-components"
 import LoadingSpinner from "../../LoadingSpinner"
 import { useQuery } from "react-query"
 import { getLocalWeather } from "../../../helpers/queries/weather/getLocalWeather"
+import { devices } from "../../../styles/styled"
 
 const WeatherContainer = styled.div`
-  width: 180px;
-  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  width: 105px;
   border-radius: 6px;
+  @media ${devices.laptop} {
+    display: flex;
+    justify-content: center;
+  }
 `
 
 const LocaleName = styled.div`

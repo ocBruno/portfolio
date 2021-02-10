@@ -19,15 +19,15 @@ const ImageArticleHeader = styled.h2`
   overflow: hidden;
   white-space: nowrap;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  padding-bottom: 0.6rem;
-  margin-bottom: 0.6rem;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
   @media (min-width: 800px) {
     font-size: 14pt;
   }
 `
 const ImageArticleSource = styled.h5`
   font-size: 12px;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
 `
 const ImageArticleImage = styled.img`
   width: 88%;

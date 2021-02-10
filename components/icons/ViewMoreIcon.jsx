@@ -5,7 +5,7 @@ import ThemedSvg from "../themed/ThemedSvg"
 
 const ViewMoreIconSvg = styled(ThemedSvg)`
   width: 24px;
-  margin-left: 0.21rem;
+  margin-left: 12px;
 `
 const ViewMoreIconPath = styled.path`
   line-height: normal;

@@ -6,7 +6,7 @@ import MostPopularArticles from "../components/MostPopularArticles"
 const PageContainer = styled.div`
   min-height: 100vh;
   background: rgb(252, 252, 252);
-  padding: 2.4rem;
+  padding: 42px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +28,7 @@ const PageFooter = styled.footer`
   align-items: center;
 `
 const NyTimesSvg = styled.svg`
-  margin-left: 3rem;
+  margin-left: 60px;
   fill: #000;
   height: 30px;
 `

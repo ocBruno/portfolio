@@ -6,7 +6,7 @@ import { useQuery } from "react-query"
 import ThemedContainer from "../../themed/ThemedContainer"
 
 import { getTopArticles } from "../../../helpers/queries/news/getTopArticles"
-import { lightShadow } from "../../../styles/styled"
+import { devices, lightShadow } from "../../../styles/styled"
 import LoadingSpinner from "../../LoadingSpinner"
 
 const ArticlesContainer = styled(ThemedContainer)`
@@ -21,21 +21,26 @@ const ArticlesContainer = styled(ThemedContainer)`
 const ArticleContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  width: 30%;
+  padding: 12px 24px;
+  width: 100%;
   border: 1px solid #ececec;
   border-radius: 3px;
   box-shadow: ${lightShadow};
-  margin-bottom: 2rem;
-  &:not(:nth-child(3n)) {
-    margin-right: 3.6rem;
+  margin-bottom: 36px;
+
+  @media ${devices.laptop} {
+    &:not(:nth-child(3n)) {
+      margin-right: 45px;
+    }
+    width: 30%;
   }
 `
 
 const ArticleCoverImage = styled.img`
   width: 80px;
-  border-radius: 0.3rem;
+  border-radius: 9px;
   margin-bottom: 9px;
+  margin-right: 15px;
 `
 const ArticleInfo = styled.div`
   width: 68%;

@@ -5,7 +5,7 @@ import ThemedSvg from "../themed/ThemedSvg"
 
 const ArrowIconSvg = styled(ThemedSvg)`
   width: 12px;
-  margin-left: 0.21rem;
+  margin-left: 12px;
   border-radius: 100%;
 `
 

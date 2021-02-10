@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import ThemedSvg from "../themed/ThemedSvg"
 
 const CloseIconSvg = styled(ThemedSvg)`
-  margin-left: 0.21rem;
+  margin-left: 12px;
   border-radius: 100%;
   cursor: pointer;
 `
